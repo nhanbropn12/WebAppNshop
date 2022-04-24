@@ -1,0 +1,52 @@
+﻿main {
+    height: fit-content;
+    background-color: var(--webdefault-color);
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-top: 9px;
+    margin-bottom: 6px;
+    margin-right: auto;
+}
+.NavBarMenu{
+   width: fit-content;
+    padding: 14px 6px 14px 6px;
+    
+}
+    .NavBarMenu ul {
+        padding: 0;
+        list-style-type: none;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+    }
+        .NavBarMenu ul li {
+            padding: 6px;
+        }
+        .NavBarMenu ul li a {
+            color: black;
+            letter-spacing: 0.1rem;
+            text-decoration: none;
+            text-align: center;
+        }
+            .NavBarMenu ul li a:hover{
+                margin-left: 9px;
+            }
+            .NavBarMenu ul li a:active{
+                color: dimgray;
+            }
+            .Menu-Option .DanhMuc {
+                font-weight: 600;
+                border-radius: 5px;
+                font-size: 1.6rem;
+                color: white;
+                background-color: #1f1f1f;
+                opacity: 0.9;
+            }
+.Menu-Option li{
+    font-size: 1.4rem;
+}
+.Main-Content {
+    flex-grow: 1;
+    width: fit-content;
+    width: fit-content;
+}

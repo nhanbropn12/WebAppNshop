@@ -1,0 +1,24 @@
+﻿@import url(SlideImage.css);
+@import url(SlideProduct.css);
+.Home-Advertisement{
+    display: flex;
+    justify-content: center;
+}
+
+.Image-Advertisement{
+    object-fit:scale-down;
+    display: block;
+    width: 210px;
+    height: auto;
+    margin: 0px 18px 6px 18px;
+}
+.Image-Advertisement-2 {
+    object-fit: scale-down;
+    display: block;
+    width: auto;
+    height: 130px;
+    margin: 0px 18px 6px 18px;
+}
+.The-Second-Advertisement{
+    height: 412px;
+}

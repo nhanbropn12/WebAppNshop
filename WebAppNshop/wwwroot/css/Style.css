@@ -1,0 +1,46 @@
+﻿@import url("main.css");
+@import url("header.css");
+@import url("footer.css");
+@import url("nav.css");
+@import url("HomePage.css");
+:root {
+    /*Purple color*/
+    --purple-color-1: #f6ebff;
+    --purple-color-2: #e7d0fb;
+    --purple-color-3: #d5a4ff;
+    --purple-color-4: #b25afd;
+    --purple-color-5: #961bff;
+    /*Default color*/
+    --webdefault-color: #f8f8fc;
+    /*Blue color*/
+    --blue-color-1: #00ecff;
+    --blue-color-2: #00d2ff;
+    --blue-color-3: #03a0ff;
+    --blue-color-4: #2f00ff;
+    /*Red color*/
+    --red-color-1: #ff2e00;
+    --red-color-2: #d82700;
+    /*Yellow color*/
+    --yellow-color-1: #fff600;
+    --yellow-color-2: #fce101;
+    /*Green color*/
+    --green-color-1: #3cff00;
+    --green-color-2: #27db17;
+   
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:inherit;
+}
+html {
+    font-size: 62.5%;
+    line-height:1.6rem;
+    font-family: 'Akshar', sans-serif;
+    box-sizing:border-box;
+}
+
+p{
+    font-size: 1rem;/*10px*/
+}
