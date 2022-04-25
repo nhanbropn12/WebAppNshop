@@ -3,6 +3,7 @@
 @import url("footer.css");
 @import url("nav.css");
 @import url("HomePage.css");
+@import url("LamThu.css");
 :root {
     /*Purple color*/
     --purple-color-1: #f6ebff;
@@ -32,7 +33,7 @@
 *{
     margin:0;
     padding:0;
-    box-sizing:inherit;
+   // box-sizing:inherit;
 }
 html {
     font-size: 62.5%;
