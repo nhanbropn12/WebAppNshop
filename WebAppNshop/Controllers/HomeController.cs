@@ -14,6 +14,10 @@ namespace WebAppNshop.Controllers
         {
             return View("HomePage");
         }
+        public IActionResult ProductList()
+        {
+            return View("ProductList");
+        }
 
         public IActionResult Privacy()
         {

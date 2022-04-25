@@ -8,10 +8,9 @@
     margin-bottom: 6px;
     margin-right: auto;
 }
-.NavBarMenu{
-   width: fit-content;
+.NavBarMenu {
+    width: 23rem;
     padding: 14px 6px 14px 6px;
-    
 }
     .NavBarMenu ul {
         padding: 0;
