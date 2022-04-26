@@ -23,5 +23,69 @@
     margin-right: auto;
     
 }
-/*nagination*/
+/*Pagination*/
+/*set style for color, position, height... for pagination*/
+.flex-pagination {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    height: 80px;
+    line-height: 80px;
+    background-color: #eeeeee;
+   /* position: absolute;
+    top: 15%;
+    left: 40%;
+    margin: -25px 0 0 -150px;*/
+}
+/*Set style for ul tag*/
+.flex-pagination ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 10px 20px 0 #cccccc;
+}
+    /*Set style for li tag*/
+    .flex-pagination ul li {
+        flex: 1;
+        list-style: none;
+        text-align: center;
+        position: relative;
+        font-size: 20px;
+        font-weight: bold;
+        transition: 0.3s ease;
+        cursor: pointer;
+        user-select: none;
+    }
+        /*create hover effect for li tag */
+        .flex-pagination ul li:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: #65bcc9;
+        }
+            /*toggle the position of the class bar when the user hovers over the numbers*/
+            .flex-pagination ul li:hover:nth-of-type(2) ~ .bar-pagination {
+                left: 20%;
+            }
+
+            .flex-pagination ul li:hover:nth-of-type(3) ~ .bar-pagination {
+                left: 40%;
+            }
+
+            .flex-pagination ul li:hover:nth-of-type(4) ~ .bar-pagination {
+                left: 60%;
+            }
+
+            .flex-pagination ul li:hover:nth-of-type(5) ~ .bar-pagination {
+                left: 80%;
+            }
+    /*set style for class bar*/
+    .flex-pagination ul .bar-pagination {
+        width: 20%;
+        background-color: dodgerblue;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: 0.3s ease;
+    }
 
