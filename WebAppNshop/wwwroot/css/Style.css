@@ -4,6 +4,7 @@
 @import url("nav.css");
 @import url("HomePage.css");
 @import url("ProductList.css");
+@import url("DetailProduct.css");
 
 :root {
     /*Purple color*/
