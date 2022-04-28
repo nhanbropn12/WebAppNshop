@@ -1,1 +1,20 @@
-﻿
+﻿.Detail-Product{
+    display: flex;
+}
+.main-detail {
+    flex-grow: 27;
+}
+.policy-product {
+    font-size: 1.1rem;
+    margin: 12px 9px 0px 9px;
+    width: 120px;
+    border-radius: 6px;
+    border: 2.1px solid #d1d1d1;
+    flex-grow: 1;
+}
+.policy-product > * {
+        padding: 2px 12px;
+}
+.main-detail-product{
+    display: flex;
+}

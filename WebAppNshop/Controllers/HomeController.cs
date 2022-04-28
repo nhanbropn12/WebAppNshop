@@ -18,6 +18,10 @@ namespace WebAppNshop.Controllers
         {
             return View("ProductList");
         }
+        public IActionResult DetailProduct()
+        {
+            return View("DetailProduct");
+        }
 
         public IActionResult Privacy()
         {
