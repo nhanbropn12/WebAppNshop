@@ -4,6 +4,15 @@
 .main-detail {
     flex-grow: 27;
 }
+.main-detail-product {
+    display: flex;
+}
+.img-and-information-product{
+   width: 360px;
+}
+.name-and-reviews-product{
+    flex-grow: 4;
+}
 .policy-product {
     font-size: 1.1rem;
     margin: 12px 9px 0px 9px;
@@ -15,6 +24,4 @@
 .policy-product > * {
         padding: 2px 12px;
 }
-.main-detail-product{
-    display: flex;
-}
+
