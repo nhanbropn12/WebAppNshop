@@ -26,12 +26,33 @@ header img {
     font-size: 14px;
     font-weight: 700;
 }
-.header-user{
+.header-user {
+    position: relative;
     margin-left: 45px;
 }
 .header-helper {
     font-size: 1.2rem;
     align-self: flex-end;
+}
+.menu-user-dropdown {
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    bottom: -180px;
+    right: 80px;
+    z-index: 2;
+    background: white;
+    text-align: center;
+    opacity: 0.95;
+    border-radius: 9px;
+}
+.menu-user-dropdown>*{
+    min-width: 140px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 6px 12px 0px 12px;
+    padding: 6px;
 }
 .header-user img{
     width: 45px;
@@ -43,7 +64,8 @@ header img {
     font-size: 1.2rem;
     font-weight: 400;
 }
-.option-user{
+.option-user {
+   
     width: 2.7rem;
     height: 2.7rem;
 }

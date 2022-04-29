@@ -46,7 +46,7 @@
 }
 .reviews-detail-product{
     display: flex;
-    justify-content: space-evenly;
+    
 }
 .reviews-detail-product span{
     font-weight: 600;
