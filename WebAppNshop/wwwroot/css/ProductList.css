@@ -2,7 +2,22 @@
     display: flex;
 }
 .tab-search-product{
+    justify-content:center;
     display: flex;
+}
+.input-search-group{
+    display: flex;
+}
+.input-search{
+    width: 180px;
+}
+.btnsearch{
+    margin-left: 10px;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight:700;
 }
 .link-box-product {
     left: 0;

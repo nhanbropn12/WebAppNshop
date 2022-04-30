@@ -26,7 +26,7 @@
             <a href="#">Xây dựng cấu hình</a>
         </div>
         <div class="header-user">
-            <div class="menu-user-dropdown">
+            <div id="menu-user-dropdown-toggle" class="menu-user-dropdown">
                 <a href="@Url.Action("Index","Accounts")" class="btn btn-info">Thông tin người dùng</a>
                 <a href="@Url.Action("Index","Transaction")" class="btn btn-secondary">Lịch sử giao dịch</a>
                 <a href="#" class="btn btn-warning">Sản phẩm yêu thích</a>
@@ -36,7 +36,7 @@
             <a class="btn btn-warning btheader"><i class="bi bi-door-open"></i>Đăng ký</a>
             <button class="btn btn-light user">Tên người dùng</button>
             <img src="~/img/avatar.jpg" />
-            <button class="btn btn-light option-user"><i class="bi bi-three-dots"></i></button>
+            <button onclick="toggleMenu()" class="btn btn-light option-user"><i class="bi bi-three-dots"></i></button>
             <a class="cart"><i class="bi bi-cart"></i></a>
             <a class="bell"><i class="bi bi-bell-fill"></i></a>
 
@@ -150,5 +150,10 @@
             </div>
         </div>
     </footer>
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu-user-dropdown-toggle").classList.toggle("switch-menu-user");
+        }
+    </script>
 </body>
 </html>
