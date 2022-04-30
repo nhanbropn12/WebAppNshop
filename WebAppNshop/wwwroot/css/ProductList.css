@@ -1,9 +1,14 @@
 ﻿.Main-Product-List{
     display: flex;
 }
-.tab-search-product{
-    justify-content:center;
+.tab-search-product {
+    align-items: center;
+    justify-content: center;
     display: flex;
+    margin: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    height: 60px;
+    background-color: white;
 }
 .input-search-group{
     display: flex;
@@ -18,6 +23,17 @@
     text-align: center;
     font-size: 1.2rem;
     font-weight:700;
+}
+.button-search{
+   
+    margin-left: 21px;
+}
+.option-search {
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 9px;
+    margin-right: 6px;
 }
 .link-box-product {
     left: 0;

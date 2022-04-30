@@ -46,7 +46,10 @@
 }
 .reviews-detail-product{
     display: flex;
-    
+}
+.reviews-detail-product>*{
+    font-weight: 500;
+    font-size: 1.2rem;
 }
 .reviews-detail-product span{
     font-weight: 600;
