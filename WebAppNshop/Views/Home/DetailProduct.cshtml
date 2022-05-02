@@ -73,6 +73,10 @@
                     <a href="#popup1" class="button-32"><i class="bi bi-pencil-fill"></i>Bình luận và đánh giá</a>
                     <div id="popup1" class="overlay">
                         <div class="popup">
+                            <div class="file-upload">
+                                <input type="file" accept="image/x-png,image/gif,image/jpeg" onchange="loadFile(event)"/>
+                                <i class="bi bi-cloud-arrow-up"></i>
+                            </div>
                             <img src="~/img/product/15-Laptop-Tot-nhat-2021-1.jpg"/>
                             <h4> Laptop Acer Spin 5 SP513-52N-556V (NX.GR7SV.004) (13.3" FHD/i5-8250U/8GB/UHD 620/Win10/1.5 kg)</h4>
                             <a class="close" href="#">&times;</a>
@@ -85,7 +89,10 @@
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star"></i>
                                 </div>
-                                <textarea placeholder="VIết đánh giá sản phẩm" cols="30" rows="7"></textarea>
+                                <div class="img-and-letter-comment">
+                                    <img id="output-img-comment" src="~/img/default-store-350x350.jpg" />
+                                    <textarea placeholder="VIết đánh giá sản phẩm" cols="30" rows="7"></textarea>
+                                </div>
                                 <center><a class="button-32">Gửi đánh giá</a></center>
                                 
                             </div>

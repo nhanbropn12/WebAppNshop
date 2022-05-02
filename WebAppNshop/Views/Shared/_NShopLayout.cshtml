@@ -154,6 +154,12 @@
         function toggleMenu() {
             document.getElementById("menu-user-dropdown-toggle").classList.toggle("switch-menu-user");
         }
+       
+            var loadFile = function(event) {//detail product
+            var image = document.getElementById('output-img-comment');
+                image.src = URL.createObjectURL(event.target.files[0]);
+            };
+    
     </script>
 </body>
 </html>
