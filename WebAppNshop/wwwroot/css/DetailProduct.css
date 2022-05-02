@@ -89,6 +89,30 @@
     font-weight: 600;
 
 }
+.options-buy-product {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 12px;
+    font-size: 2.4rem;
+    align-items:stretch;
+    /* border: 2.7px solid #d1d1d1;*/
+   
+    max-width: 750px;
+}
+.options-buy-product>*{
+    text-align: center !important;
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    height: 45px !important;
+    letter-spacing:0.12rem;
+    padding: 9px !important;
+    width: 180px;
+   /* margin: 16px;*/
+    text-decoration: none;
+}
+.options-buy-product>*:hover{
+    color: black;
+}
 .policy-product {
     height: fit-content;
     font-size: 1.1rem;
