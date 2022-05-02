@@ -41,7 +41,11 @@
                 background-color: #1f1f1f;
                 opacity: 0.9;
             }
-.Menu-Option li{
+.Menu-Option {
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.Menu-Option li {
     font-size: 1.4rem;
 }
 .Main-Content {

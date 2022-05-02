@@ -2,6 +2,7 @@
     display: flex;
 }
 .main-detail {
+    background: white;
     flex-grow: 27;
 }
 .main-detail-product {
@@ -124,4 +125,45 @@
 .policy-product > * {
         padding: 2px 12px;
 }
-
+.comment-of-product {
+    height: fit-content;
+    max-width: 750px;
+    border: 2.7px solid #d1d1d1;
+}
+.fillter-comment{
+    display:flex;
+    align-items: start;
+}
+.fillter-comment>*{
+    padding: 6px !important;
+    text-decoration: none;
+    margin: 14px !important;
+}
+.fillter-comment span{
+    font-weight: 600;
+}
+.options-comment{
+    margin:12px;
+    display: flex;
+}
+.options-comment>*{
+    margin-right: 12px;
+}
+.reviews-comment {
+    min-width:180px;
+    border: 2.7px solid #d1d1d1;
+}
+.reviews-comment>*{
+    margin: 6px;
+}
+.sum-of-star-comment{
+    font-size: 2.1rem;
+    color: var(--yellow-color-1);
+}
+.reviews-comment h1{
+    float: left;
+}
+.reviews-comment h3 {
+    
+    color: #f38020;
+}
