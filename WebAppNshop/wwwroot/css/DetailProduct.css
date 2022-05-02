@@ -61,6 +61,34 @@
 .review-star{
     color: var(--yellow-color-1);
 }
+.price-detail-product {
+    position: relative;
+    margin-top: 12px;
+    padding: 8px;
+    font-size: 2.4rem;
+    font-weight: 800;
+    border: 2.7px solid #d1d1d1;
+    min-height: 90px;
+    max-width: 750px;
+}
+.price-detail-product>h1{
+    margin: 12px;
+    letter-spacing: 2px;
+}
+.price-detail-product>a{
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-weight: 700;
+    color: red;
+    font-size: 3.6rem;
+}
+.tax-and-guarantee-product>button{
+    margin: 12px;
+    font-size:1.1rem;
+    font-weight: 600;
+
+}
 .policy-product {
     height: fit-content;
     font-size: 1.1rem;
