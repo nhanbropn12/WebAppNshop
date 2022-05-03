@@ -37,7 +37,7 @@
             <button class="btn btn-light user">Tên người dùng</button>
             <img src="~/img/avatar.jpg" />
             <button onclick="toggleMenu()" class="btn btn-light option-user"><i class="bi bi-three-dots"></i></button>
-            <a class="cart"><i class="bi bi-cart"></i></a>
+            <a asp-controller="Products" asp-action="ProductCart" class="cart"><i class="bi bi-cart"></i></a>
             <a class="bell"><i class="bi bi-bell-fill"></i></a>
 
         </div>
@@ -85,7 +85,7 @@
                     <a href="#"><i class="bi bi-cpu"></i>Linh kiện PC</a>
                     <hr class="style-hr" />
                 </li>
-                
+
                 <li>
                     <a href="#"><i class="bi bi-device-hdd"></i>Phụ kiện</a>
                 </li>
@@ -94,7 +94,7 @@
         <div class="Main-Content">
             @RenderBody()
         </div>
-        
+
     </main>
     <!-- Site footer -->
     <footer class="site-footer">
@@ -150,16 +150,10 @@
             </div>
         </div>
     </footer>
-    <script>
-        function toggleMenu() {
-            document.getElementById("menu-user-dropdown-toggle").classList.toggle("switch-menu-user");
-        }
-       
-            var loadFile = function(event) {//detail product
-            var image = document.getElementById('output-img-comment');
-                image.src = URL.createObjectURL(event.target.files[0]);
-            };
-    
-    </script>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/webapp.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
