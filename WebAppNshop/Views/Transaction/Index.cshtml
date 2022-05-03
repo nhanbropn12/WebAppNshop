@@ -3,18 +3,43 @@
     Layout = null;
 }
 <style>
-    .form-group {
+    .form-group,{
         box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 12px 0px, rgba(255, 255, 255, 0.5) 0px 0px 0px 0px inset;
         display: block;
         align-items: center;
         border-radius: 20px;
     }
-
+    .sanpham {
+        border-radius: 20px;
+        border:groove;
+        padding:10px;
+    }
     .col-md-2 {
         background-color: none;
     }
     .gachchan {
         border-bottom: 3px solid #808080;
+
+    }
+    .thea1 {
+       
+        position: relative;
+        text-decoration: none;
+       
+        color:black;
+        font-size: 20px;
+        transition: 0.1s ease;
+        letter-spacing:0.5px;
+        
+    }
+ .bg-light{
+     padding:20px;
+ }
+
+    .thea1:hover {
+       
+        border-bottom: 3px solid #808080;
+
     }
 </style>
 <link href="~/css/LamThu.css" type="text/css" rel="stylesheet" />
@@ -40,24 +65,60 @@
     <div class="col-md-10">
         <div class="container d-flex">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Tất cả đơn hàng</a>
+                <a class="thea1" href="#">Tất cả đơn hàng</a>
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Chờ xác nhận</a>
+                <a class="thea1" href="#">Chờ xác nhận</a>
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Đang giao</a>
+                <a class="thea1" href="#">Đang giao</a>
 
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Đã nhận</a>
+                <a class="thea1" href="#">Đã nhận</a>
 
             </nav>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Đã hủy</a>
+                <a class="thea1" href="#">Đã hủy</a>
 
             </nav>
+
         </div>
 
+        <div class="container main">
+            <hr>
+            <div>
+            <span>Trạng thái: </span>
+                <b style="color:#318b32">Giao hàng thành công</b>
+                </div>
+            <div class="main-context">
+                <div class="mb-3 sanpham">
+                    <div class="d-flex" style="align-items:center">
+                        <img src="https://laptopaz.vn/media/product/2391_laptopaz_asus_rog_strix_g513ic_0.jpg" style="width:100px; height:100px;">
+                        <label for="formGroupExampleInput" class="form-label" style="font-weight:bold">Asus Vivobook X515JA (Core i3-1005G1, 8GB, 256GB, UHD, 15.6'' HD)</label>
+                    </div>
+                    <div class="d-flex" style="align-items:center;justify-content:flex-end">
+                        <label for="formGroupExampleInput" class="form-label" style="font-weight:bold;margin-right:15px">12.000.000VND</label>
+                        <button class="btn btn-default">Xem chi tiết</button>
+
+                    </div>
+                </div>
+                <div class="mb-3 sanpham">
+                    <div class="d-flex" style="align-items:center">
+                        <img src="https://laptopaz.vn/media/product/2315_4.jpg" style="width:100px; height:100px;">
+                        <label for="formGroupExampleInput" class="form-label" style="font-weight:bold"> Asus Zenbook 14 Q408UG (Ryzen 5-5500U, 8GB, 256GB, MX450, 14.0'' FHD IPS)</label>
+                    </div>
+                    <div class="d-flex" style="align-items:center;justify-content:flex-end">
+                        <label for="formGroupExampleInput" class="form-label" style="font-weight:bold;margin-right:15px">15.990.000VND</label>
+                        <button class="btn btn-default">Xem chi tiết</button>
+
+                    </div>
+                </div>
+                <div style="float:right;font-size:19px;">
+                    <span>Tổng tiền: </span>
+                    <b style="color:#ac3131">$$$$$$$</b>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
