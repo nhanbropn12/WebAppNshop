@@ -185,6 +185,7 @@ input:focus {
     }
 }
 .panel-payment {
+    text-align: center !important;
     width: 320px;
     margin: 12px;
 }
@@ -241,4 +242,25 @@ input:focus {
     padding: 4px 12px;
     margin: 0 12px;
     color: white;
+}
+.label-provisional-price {
+    text-align: center;
+    margin: 24px auto;
+    border: 0.21rem solid #d1d1d1;
+    border-radius: 18px;
+    padding: 9px;
+}
+.label-provisional-price p{
+    padding: 6px;
+    display: inline;
+    font-size: 1.6rem;
+}
+.panel-payment .btn-payment {
+    margin: 42px !important;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center !important;
+    padding: 14px;
+    width: 240px !important;
 }
