@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "chuoi": "Server=TINH\\SQLEXPRESS;Database=Nshop;Trusted_Connection=True;"
+
+  }
+}
