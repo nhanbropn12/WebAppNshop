@@ -7,6 +7,7 @@
 @import url("DetailProduct.css");
 @import url("LamThu.css");
 @import url("cartproduct.css");
+@import url("UserLayout.css");
 :root {
     /*Purple color*/
     --purple-color-1: #f6ebff;
