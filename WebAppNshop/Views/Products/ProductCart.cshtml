@@ -1,32 +1,32 @@
 ﻿@{
-    Layout = "_NShop2Layout";
+    Layout = "_NShopForUserLayout";
 }
 <div class="Main-Cart-Product">
     <div class="shopping-cart">
         <!-- Title -->
-        <div class="title">
+        <div class="title-cart">
             Shopping Bag
         </div>
-        @for (int i = 0; i < 3; i++)
+        @for (int i = 0; i < 6; i++)
         {
             <!-- Product #1 -->
-            <div class="item">
-                <div class="buttons">
+            <div class="item-product-cart">
+                <div class="buttons-for-item-cart">
                     <span class="delete-btn"></span>
                     <span class="like-btn"></span>
                 </div>
 
-                <div class="image">
+                <div class="image-item-cart">
                     <img style="width: 60px;" src="~/img/product/53013_mouse_logitech_g102_lightsync_rgb_white_0002_3.jpg" alt="" />
                 </div>
 
-                <div class="description">
+                <div class="description-item">
                     <span>Common Projects</span>
                     <span>Bball High</span>
                     <span>White</span>
                 </div>
 
-                <div class="quantity">
+                <div class="quantity-of-item">
                     <button class="plus-btn" type="button" name="button">
                         <img src="~/SVG/plus.svg" alt="" />
                     </button>
@@ -36,7 +36,7 @@
                     </button>
                 </div>
 
-                <div class="total-price">$549</div>
+                <div class="total-price-item">$549</div>
             </div>
         }
         <!-- Product #2 -->
@@ -102,15 +102,24 @@
        <div class="address-for-deliver">
            <h2>Giao tới</h2>
            <a href="#" class="change-address">Thay đổi</a>
-           <p>Tên người dùng <span class="vertical-line"> </span> 098369369396</p>
+           <p>Tên người dùng<span class="vertical-line"></span>098369369396</p>
            <textarea disabled class="address-content" cols="4" rows="4">
                 sdsadasfsadsadssafsafsafsafsfa
             </textarea>
        </div>
         <div class="code-promotion">
             <p>Nhập mã khuyến mãi</p>
-            <input type="text" />
-            <button class="btn btn-info">Áp dụng</button>
+            <input type="text" class="form-control input-promotion" placeholder="Nhập mã giảm giá ...." />
+            <button class="btn btn-info apply-code-promotion">Áp dụng</button>
         </div>
+        <div class="label-provisional-price">
+            <h3>Thanh toán</h3>
+            <p style="color:grey">Tạm tính  &emsp;</p><p>36.000.000đ</p><br/>
+            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">36.000.000đ</p><br/>
+            <p style="color:grey;">(Đã bao gồm VAT)</p>
+        </div>
+        <a href="#" class="button-9 btn-payment">Thanh toán</a>
+        <a href="#" class="button-83 btn-payment">Quay lại cửa hàng</a>
+
     </div>
 </div>

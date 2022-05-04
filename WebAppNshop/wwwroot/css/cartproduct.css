@@ -3,8 +3,8 @@
 }
 
 .shopping-cart {
-    width: 750px;
-    height: 423px;
+    width: 900px;
+    height: fit-content;
     margin: 80px auto;
     background: #FFFFFF;
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
 }
-.title {
+.title-cart {
     height: 60px;
     border-bottom: 1px solid #E1E8EE;
     padding: 20px 30px;
@@ -21,18 +21,21 @@
     font-weight: 400;
 }
 
-.item {
+.item-product-cart {
     padding: 20px 30px;
     height: 120px;
     display: flex;
 }
+    .item-product-cart > * {
+        margin: 0px 12px;
+    }
 
-    .item:nth-child(3) {
+    .item-product-cart:nth-child(3) {
         border-top: 1px solid #E1E8EE;
         border-bottom: 1px solid #E1E8EE;
     }
 
-.buttons {
+.buttons-for-item-cart {
     position: relative;
     padding-top: 30px;
     margin-right: 60px;
@@ -81,39 +84,39 @@
         background-position: right;
     }
 }
-.image {
+.image-item-cart {
     margin-right: 50px;
 }
 
 
-.description {
+.description-item {
     padding-top: 10px;
     margin-right: 60px;
-    width: 115px;
+    width: 221px;
 }
 
-.description span {
+.description-item span {
     display: block;
     font-size: 14px;
     color: #43484D;
     font-weight: 400;
 }
 
-    .description span:first-child {
+    .description-item span:first-child {
         margin-bottom: 5px;
     }
 
-    .description span:last-child {
+    .description-item span:last-child {
         font-weight: 300;
         margin-top: 8px;
         color: #869
     }
-.quantity {
+.quantity-of-item {
     padding-top: 20px;
     margin-right: 60px;
 }
 
-    .quantity input {
+    .quantity-of-item input {
         -webkit-appearance: none;
         border: none;
         text-align: center;
@@ -123,7 +126,7 @@
         font-weight: 300;
     }
 
-button[class*=btn] {
+.item-product-cart button[class*=btn] {
     width: 30px;
     height: 30px;
     background-color: #E1E8EE;
@@ -140,11 +143,11 @@ button[class*=btn] {
     margin-top: 2px;
 }
 
-button:focus,
+.item-product-cart button:focus,
 input:focus {
     outline: 0;
 }
-.total-price {
+.total-price-item {
     width: 83px;
     padding-top: 27px;
     text-align: center;
@@ -159,64 +162,105 @@ input:focus {
         overflow: hidden;
     }
 
-    .item {
+    .item-product-cart {
         height: auto;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    .image img {
+    .image-item-cart img {
         width: 50%;
     }
 
-    .image,
-    .quantity,
-    .description {
+    .image-item-cart,
+    .quantity-of-item,
+    .description-item {
         width: 100%;
         text-align: center;
         margin: 6px 0;
     }
 
-    .buttons {
+    .buttons-for-item-cart {
         margin-right: 20px;
     }
 }
 .panel-payment {
-    height: 210px;
+    text-align: center !important;
+    width: 320px;
+    margin: 12px;
+}
+.address-for-deliver {
+    margin: 80px auto 20px auto;
+    height: 180px;
     border: 0.21rem solid #d1d1d1;
     border-radius: 18px;
     position: relative;
-    width: 240px;
-    margin: 12px;
 }
-.panel-payment h2{
+.address-for-deliver h2{
     position: absolute;
     left: 9px;
     top: 9px;
 }
-.panel-payment .change-address{
+.address-for-deliver .change-address{
     position: absolute;
     right: 9px;
     top: 9px;
 }
-.panel-payment p{
+.address-for-deliver p{
+
     font-weight: 700;
-    font-size:1.2rem;
+    font-size:1.4rem;
     position: absolute;
-    top: 36px;
-    left: 16px;
+    top: 40px;
+    left: 24px;
 }
-    .panel-payment .address-content {
+    .address-for-deliver .address-content {
+        font-size: 1.2rem;
         position: absolute;
-        bottom: 21px;
+        bottom: 18px;
         resize: none;
         padding: 9px;
         width: 95%;
         outline: none;
         border: none;
         left: 2.5%;
-}
+    }
 .code-promotion {
-    border: 0.21rem solid;
+    display: block;
+    border: 0.21rem solid #d1d1d1;
     background-color: #bde8ee;
+    padding: 9px;
+}
+.input-promotion{
+    padding: 6px;
+    width: 180px;
+    float: left;
+
+}
+.apply-code-promotion {
+    font-size: 1.2rem;
+    padding: 4px 12px;
+    margin: 0 12px;
+    color: white;
+}
+.label-provisional-price {
+    text-align: center;
+    margin: 24px auto;
+    border: 0.21rem solid #d1d1d1;
+    border-radius: 18px;
+    padding: 9px;
+}
+.label-provisional-price p{
+    padding: 6px;
+    display: inline;
+    font-size: 1.6rem;
+}
+.panel-payment .btn-payment {
+    margin: 42px !important;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center !important;
+    padding: 14px;
+    width: 240px !important;
 }
