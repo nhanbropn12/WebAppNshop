@@ -12,5 +12,9 @@ namespace WebAppNshop.Controllers
         {
             return View();
         }
+        public IActionResult SignUp()
+        {
+            return View("SignUp");
+        }
     }
 }
