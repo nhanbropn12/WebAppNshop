@@ -16,5 +16,9 @@ namespace WebAppNshop.Controllers
         {
             return View("SignUp");
         }
+        public IActionResult SignIn()
+        {
+            return View("SignIn");
+        }
     }
 }

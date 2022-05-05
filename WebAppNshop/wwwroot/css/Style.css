@@ -9,6 +9,7 @@
 @import url("cartproduct.css");
 @import url("UserLayout.css");
 @import url("SignUp.css");
+/*@import url("SignIn.css"); dùng trực tiếp trong sign in view*/
 :root {
     /*Purple color*/
     --purple-color-1: #f6ebff;
