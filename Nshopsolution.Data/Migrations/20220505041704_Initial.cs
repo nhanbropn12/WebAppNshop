@@ -8,6 +8,25 @@ namespace Nshopsolution.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Accounts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LastName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    CardNumber = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    DateCreate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
@@ -42,6 +61,29 @@ namespace Nshopsolution.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Comment",
+                columns: table => new
+                {
+                    Idcomment = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Iduser = table.Column<int>(nullable: false),
+                    feedback = table.Column<int>(nullable: false),
+                    Datecreate = table.Column<DateTime>(nullable: false),
+                    Image = table.Column<string>(nullable: true),
+                    Contentfeedback = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comment", x => x.Idcomment);
+                    table.ForeignKey(
+                        name: "FK_Comment_Accounts_Iduser",
+                        column: x => x.Iduser,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProductInCategories",
                 columns: table => new
                 {
@@ -66,6 +108,11 @@ namespace Nshopsolution.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comment_Iduser",
+                table: "Comment",
+                column: "Iduser");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductInCategories_CategoryId",
                 table: "ProductInCategories",
                 column: "CategoryId");
@@ -74,7 +121,13 @@ namespace Nshopsolution.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Comment");
+
+            migrationBuilder.DropTable(
                 name: "ProductInCategories");
+
+            migrationBuilder.DropTable(
+                name: "Accounts");
 
             migrationBuilder.DropTable(
                 name: "Categories");

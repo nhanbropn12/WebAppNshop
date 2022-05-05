@@ -19,6 +19,39 @@ namespace Nshopsolution.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Nshopsolution.Data.Entities.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Accounts");
+                });
+
             modelBuilder.Entity("Nshopsolution.Data.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -43,6 +76,35 @@ namespace Nshopsolution.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Nshopsolution.Data.Entities.Comment", b =>
+                {
+                    b.Property<int>("Idcomment")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contentfeedback")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Datecreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Iduser")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("feedback")
+                        .HasColumnType("int");
+
+                    b.HasKey("Idcomment");
+
+                    b.HasIndex("Iduser");
+
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("Nshopsolution.Data.Entities.Product", b =>
@@ -92,6 +154,15 @@ namespace Nshopsolution.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("ProductInCategories");
+                });
+
+            modelBuilder.Entity("Nshopsolution.Data.Entities.Comment", b =>
+                {
+                    b.HasOne("Nshopsolution.Data.Entities.Account", "Account")
+                        .WithMany("Comments")
+                        .HasForeignKey("Iduser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Nshopsolution.Data.Entities.ProductInCategory", b =>

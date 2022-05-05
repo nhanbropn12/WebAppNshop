@@ -10,7 +10,7 @@ using Nshopsolution.Data.EF;
 namespace Nshopsolution.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20220504162148_Initial")]
+    [Migration("20220505041704_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,39 @@ namespace Nshopsolution.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Nshopsolution.Data.Entities.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Accounts");
+                });
 
             modelBuilder.Entity("Nshopsolution.Data.Entities.Category", b =>
                 {
@@ -45,6 +78,35 @@ namespace Nshopsolution.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Nshopsolution.Data.Entities.Comment", b =>
+                {
+                    b.Property<int>("Idcomment")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contentfeedback")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Datecreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Iduser")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("feedback")
+                        .HasColumnType("int");
+
+                    b.HasKey("Idcomment");
+
+                    b.HasIndex("Iduser");
+
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("Nshopsolution.Data.Entities.Product", b =>
@@ -94,6 +156,15 @@ namespace Nshopsolution.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("ProductInCategories");
+                });
+
+            modelBuilder.Entity("Nshopsolution.Data.Entities.Comment", b =>
+                {
+                    b.HasOne("Nshopsolution.Data.Entities.Account", "Account")
+                        .WithMany("Comments")
+                        .HasForeignKey("Iduser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Nshopsolution.Data.Entities.ProductInCategory", b =>

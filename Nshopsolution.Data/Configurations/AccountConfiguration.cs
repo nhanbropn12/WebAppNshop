@@ -1,0 +1,19 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Nshopsolution.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Nshopsolution.Data.Configurations
+{
+    class AccountConfiguration : IEntityTypeConfiguration<Account>
+    {
+        public void Configure(EntityTypeBuilder<Account> builder)
+        {
+            builder.ToTable("Accounts");
+            builder.HasKey(x => x.Id);
+        
+        }
+    }
+}
