@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace WebAppNshop.Controllers
 {
-    public class ProductsController : Controller
+    public class AdminController : Controller
     {
         public IActionResult Index()
         {
             return View();
-        }
-        public IActionResult ProductCart()
-        {
-            return View("ProductCart");
-        }
-        public IActionResult ArticleProduct()
-        {
-            return View("ArticleProduct");
         }
     }
 }
