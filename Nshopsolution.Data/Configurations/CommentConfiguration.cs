@@ -13,6 +13,7 @@ namespace Nshopsolution.Data.Configurations
         {
             builder.ToTable("Comment");
             builder.HasKey(x => x.Idcomment);
+            // KhoÁ PHỤ
             builder.HasOne(x => x.Account).WithMany(x => x.Comments).HasForeignKey(x=>x.Iduser);
         }
     }

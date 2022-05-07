@@ -10,7 +10,7 @@ using Nshopsolution.Data.EF;
 namespace Nshopsolution.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20220505041704_Initial")]
+    [Migration("20220505091832_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

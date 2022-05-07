@@ -11,7 +11,9 @@ namespace Nshopsolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Account> builder)
         {
+            //tên bảng
             builder.ToTable("Accounts");
+            //khóa chính
             builder.HasKey(x => x.Id);
         
         }
