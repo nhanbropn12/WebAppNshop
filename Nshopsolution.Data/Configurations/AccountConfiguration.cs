@@ -15,6 +15,7 @@ namespace Nshopsolution.Data.Configurations
             builder.ToTable("Accounts");
             //khóa chính
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.FirstName).IsRequired();
         
         }
     }

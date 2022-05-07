@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Nshopsolution.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Intial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -106,6 +106,11 @@ namespace Nshopsolution.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "Id", "Address", "CardNumber", "DateCreate", "DateOfBirth", "Email", "FirstName", "LastName" },
+                values: new object[] { 1, "Quy Nhon", "1234", new DateTime(2022, 5, 7, 19, 51, 23, 745, DateTimeKind.Local).AddTicks(8495), new DateTime(2022, 5, 7, 19, 51, 23, 743, DateTimeKind.Local).AddTicks(9121), "nguyentinh14032001@gmail.com", "NguyenTinh", "Nguyen" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_Iduser",

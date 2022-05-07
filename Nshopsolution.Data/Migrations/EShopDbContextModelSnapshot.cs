@@ -50,32 +50,19 @@ namespace Nshopsolution.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
-                });
 
-            modelBuilder.Entity("Nshopsolution.Data.Entities.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IsShowOnHome")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SortOrder")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Quy Nhon",
+                            CardNumber = "1234",
+                            DateCreate = new DateTime(2022, 5, 7, 19, 57, 21, 316, DateTimeKind.Local).AddTicks(6799),
+                            DateOfBirth = new DateTime(2022, 5, 7, 19, 57, 21, 315, DateTimeKind.Local).AddTicks(5408),
+                            Email = "nguyentinh14032001@gmail.com",
+                            FirstName = "NguyenTinh",
+                            LastName = "Nguyen"
+                        });
                 });
 
             modelBuilder.Entity("Nshopsolution.Data.Entities.Comment", b =>
@@ -107,75 +94,11 @@ namespace Nshopsolution.Data.Migrations
                     b.ToTable("Comment");
                 });
 
-            modelBuilder.Entity("Nshopsolution.Data.Entities.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Originalprice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("SeoAlias")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Stock")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.Property<int>("ViewCount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Nshopsolution.Data.Entities.ProductInCategory", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "CategoryId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("ProductInCategories");
-                });
-
             modelBuilder.Entity("Nshopsolution.Data.Entities.Comment", b =>
                 {
                     b.HasOne("Nshopsolution.Data.Entities.Account", "Account")
                         .WithMany("Comments")
                         .HasForeignKey("Iduser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Nshopsolution.Data.Entities.ProductInCategory", b =>
-                {
-                    b.HasOne("Nshopsolution.Data.Entities.Category", "Category")
-                        .WithMany("ProductInCategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Nshopsolution.Data.Entities.Product", "Product")
-                        .WithMany("ProductInCategories")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
