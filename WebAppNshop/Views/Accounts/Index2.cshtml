@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_NshopForUserLayout";
+}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="javascript:void(0)">Quản lý người dùng</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item ms-5">
+                    <button class="btn btn-primary" type="button">Nhập file Excel</button>
+                </li>
+                <li class="nav-item ms-5">
+                    <button class="btn btn-primary" type="button">Xuất file Excel</button>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Nhập tên người dùng">
+                <button class="btn btn-primary" type="button">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div>
+    <table class="table table-bordered border-primary col-sm-9">
+        <tr>
+            <td>Mã người dùng</td>
+            <td>Họ tên</td>
+            <td>Email</td>
+            <td>Mật khẩu</td>
+            <td>Địa chỉ</td>
+            <td>Ngày sinh</td>
+            <td>Giới tính</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>M01</td>
+            <td>Nguyễn Văn Dìa</td>
+            <td>nguyenvandiatlvn3@gmail.com</td>
+            <td>Dia09095</td>
+            <td>Hội Tân-Nhơn hội</td>
+            <td>16/10/2001</td>
+            <td>Nam</td>
+            <td style="text-align:center">
+                <a href="#">
+                    Thêm
+                </a>||
+                <a href="#">
+                    Sửa
+                </a>||
+                <a href="#">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

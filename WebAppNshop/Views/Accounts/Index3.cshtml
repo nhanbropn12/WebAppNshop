@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "_NshopForUserLayout";
+}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="javascript:void(0)">Quản lý sản phẩm</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item ms-5">
+                    <button class="btn btn-primary" type="button">Nhập file Excel</button>
+                </li>
+                <li class="nav-item ms-5">
+                    <button class="btn btn-primary" type="button">Xuất file Excel</button>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Nhập tên người dùng">
+                <button class="btn btn-primary" type="button">Sreach</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div>
+    <table class="table table-bordered border-primary col-sm-9">
+        <tr>
+            <td>Mã sản phẩm</td>
+            <td>Tên sản phẩm</td>
+            <td>Ảnh sản phẩm</td>
+            <td>Xuất xứ</td>
+            <td>Thương hiệu</td>
+            <td>Đơn giá</td>
+            <td>Số lượng</td>
+            <td>Đơn vị tính</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>MS101</td>
+            <td>Msi modem 14 b11sbu</td>
+            <td ><img style="height:100px;width:100px;" src="~/SVG/minus.svg" alt="" /></td>
+            <td>Đài loan</td>
+            <td>MSI</td>
+            <td>24.000.000</td>
+            <td>5</td>
+            <td>Chiếc</td>
+            <td style="text-align:center">
+                <a href="#">
+                    Thêm
+                </a>||
+                <a href="#">
+                    Sửa
+                </a>||
+                <a href="#">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+

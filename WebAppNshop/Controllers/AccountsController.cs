@@ -20,5 +20,13 @@ namespace WebAppNshop.Controllers
         {
             return View("SignIn");
         }
+        public IActionResult Index2()
+        {
+            return View("Index2");
+        }
+        public IActionResult Index3()
+        {
+            return View("Index3");
+        }
     }
 }
