@@ -10,6 +10,9 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item ms-5">
+                    <button class="btn btn-primary ms-5" id="themsanpham" data-bs-toggle="modal" data-bs-target="#mdlExam">Thêm sản phẩm</button>
+                </li>
+                <li class="nav-item ms-5">
                     <button class="btn btn-primary" type="button">Nhập file Excel</button>
                 </li>
                 <li class="nav-item ms-5">
@@ -39,16 +42,13 @@
         <tr>
             <td>MS101</td>
             <td>Msi modem 14 b11sbu</td>
-            <td ><img style="height:100px;width:100px;" src="~/SVG/minus.svg" alt="" /></td>
+            <td ><img style="height:100px" src="~/img/product/15-Laptop-Tot-nhat-2021-1.jpg" alt="" /></td>
             <td>Đài loan</td>
             <td>MSI</td>
             <td>24.000.000</td>
             <td>5</td>
             <td>Chiếc</td>
             <td style="text-align:center">
-                <a href="#">
-                    Thêm
-                </a>||
                 <a href="#">
                     Sửa
                 </a>||
@@ -59,4 +59,74 @@
         </tr>
     </table>
 </div>
+<script type="text/javascript">
+    //Code phần này để tui code
+    $(document).on('click', '#themsanpham', function () {
+       // $('#txtMaKhoa').attr("readonly", false);
+      //  $('#txtMaKhoa').val('');
+       // $('#txtTenKhoa').val('');
+      //  $('#txtDiaChi').val('');
+      //  $('#txtSDT').val('');
+        // Một lỗi nhỏ lưu ý
+      //  $('#kiemtra').val('');
+    });
+</script>
+    <div class="modal" id="mdlExam">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="mdlExamLabel">Thêm sản phẩm</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" style="display: flex;flex-direction: column;align-items: center; justify-content:center">
+                    <input type="hidden" id="kiemtra" value="">
+                    <form action="Create">
+                        <div class="form-group">
+
+                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Mã sản phẩm</label>
+                            <textarea onkeydown="kt()" style="width: 330px;" class="form-control" id="txtMaSanPham" rows="1"></textarea>
+                        </div>
+                        <span id="name-check"></span>
+                        <div class="form-group">
+                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Tên sản phẩm</label>
+                            <textarea style="width: 330px;" class="form-control" id="txtTenSanPham" rows="1"></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="exampleFormControlFile1">Ảnh sản phẩm</label>
+                            <input type="file" class="form-control-file" id="anh">
+                        </div>
+                        <div class="form-group">
+                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Xuất sứ</label>
+                            <textarea style="width: 330px;" class="form-control" id="txtXuatXu" rows="1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Thương hiệu</label>
+                            <textarea style="width: 330px;" class="form-control" id="txtThuongHieu" rows="1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Đơn giá</label>
+                            <textarea style="width: 330px;" class="form-control" id="txtDongia" rows="1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Số lượng</label>
+                            <textarea style="width: 330px;" class="form-control" id="txtSoLuong" rows="1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Đơn vị tính</label>
+                            <textarea style="width: 330px;" class="form-control" id="txtDonViTinh" rows="1"></textarea>
+                        </div>
+                    </form>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <a class="btn btn-success" id="btnSubmit">Xác nhận</a>
+                        </div>
+            </div>
+                </div>
+            </div>
+        </div>
 

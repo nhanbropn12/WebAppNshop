@@ -10,6 +10,9 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item ms-5">
+                    <button class="btn btn-primary ms-5" id="themnguoidung" data-bs-toggle="modal" data-bs-target="#mdlExam">Thêm người dùng</button>
+                </li>
+                <li class="nav-item ms-5">
                     <button class="btn btn-primary" type="button">Nhập file Excel</button>
                 </li>
                 <li class="nav-item ms-5">
@@ -56,4 +59,71 @@
             </td>
         </tr>
     </table>
+</div>
+<script type="text/javascript">
+    //Code phần này để tui code
+    $(document).on('click', '#themnguoidung', function () {
+       // $('#txtMaKhoa').attr("readonly", false);
+      //  $('#txtMaKhoa').val('');
+       // $('#txtTenKhoa').val('');
+      //  $('#txtDiaChi').val('');
+      //  $('#txtSDT').val('');
+        // Một lỗi nhỏ lưu ý
+      //  $('#kiemtra').val('');
+    });
+</script>
+<div class="modal" id="mdlExam">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="mdlExamLabel">Thêm người dùng</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" style="display: flex;flex-direction: column;align-items: center; justify-content:center">
+                <input type="hidden" id="kiemtra" value="">
+                <form action="Create">
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Mã người dùng</label>
+                        <textarea onkeydown="kt()" style="width: 330px;" class="form-control" id="txtMaNguoiDung" rows="1"></textarea>
+                    </div>
+                    <span id="name-check"></span>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Họ tên</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtHoTen" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Email</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtEmail" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Mật khẩu</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtMatKhau" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Địa chỉ</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtDiaChi" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Ngày sinh</label>
+                        <div>
+                            <input type="date" name="" id="datOpen">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Giới tính</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtGioiTinh" rows="1"></textarea>
+                    </div>
+                </form>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <a class="btn btn-success" id="btnSubmit">Xác nhận</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
