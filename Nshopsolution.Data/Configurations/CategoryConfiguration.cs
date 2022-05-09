@@ -12,6 +12,8 @@ namespace Nshopsolution.Data.Configurations
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.ToTable("Categories");
+            builder.HasKey(x => x.IdCategory);
+
         }
 
         
