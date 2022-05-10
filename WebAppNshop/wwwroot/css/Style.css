@@ -9,6 +9,8 @@
 @import url("cartproduct.css");
 @import url("UserLayout.css");
 @import url("SignUp.css");
+@import url("ArticleProduct.css");
+@import url("CheckOutForm.css");
 /*@import url("SignIn.css"); dùng trực tiếp trong sign in view*/
 :root {
     /*Purple color*/
@@ -247,4 +249,35 @@ html {
 
 .button-9:focus {
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+/*Button sale*/
+.button-62 {
+    background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+    border: 0;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+.button-62:not([disabled]):focus {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-62:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }

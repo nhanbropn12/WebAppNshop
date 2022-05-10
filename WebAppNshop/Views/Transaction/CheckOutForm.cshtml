@@ -1,0 +1,32 @@
+﻿@{ 
+    Layout = "_NshopForUserLayout";
+}
+<div class="Form-CheckOut">
+    <div class="form-product-checkout">
+        <h1>Thanh toán & mua hàng</h1>
+        <div class="list-product-checkout">
+            @for (int i = 0; i < 3; i++)
+            {
+            <div class="product-checkout">
+                <img src="~/img/product/Laptop-Asus-TUF-Gaming-FX506LH-HN002T-i5-10300H-xam-6.png" />
+                <p class="title-product-checkout">Laptop ACER Nitro 5 AN515-45-R6EV NH.QBMSV.006 ( 15.6" Full HD/ 144Hz/AMD Ryzen 5 5600H/8GB/512GB SSD/NVIDIA GeForce GTX 1650/Windows 11 Home/2.2kg)</p>
+                <p>SL:1</p>
+                <p class="price-of-product-checkout">31.000.000đ</p>
+            </div>
+            }
+        </div>
+        <div class="options-payment">
+            <h2><i class="bi bi-currency-dollar"></i>Chọn hình thức thanh toán</h2>
+            <input type="radio" name="optionpayment" checked/>
+            <label for="optionpayment"><i class="bi bi-wallet2"></i>Thanh toán khi nhận hàng</label><br />
+            <input type="radio" name="optionpayment" />
+            <label for="optionpayment"><i class="bi bi-window-fullscreen"></i>Thanh toán bằng ví Momo</label><br />
+            <input type="radio" name="optionpayment" />
+            <label for="optionpayment"><i class="bi bi-credit-card-2-front"></i>Thanh toán bằng thẻ quốc tế</label><br />
+        </div>
+    </div>
+    <div class="payment-checkout">
+       <div class="price-checkout"></div>
+       <a href="#" class="button-66" style="width:fit-content;text-decoration:none;">Thanh toán</a>
+    </div>
+</div>

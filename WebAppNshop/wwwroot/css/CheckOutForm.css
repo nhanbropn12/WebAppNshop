@@ -1,0 +1,60 @@
+﻿.Form-CheckOut {
+   
+    display: flex;
+}
+.form-product-checkout {
+    width: 93rem;
+}
+.list-product-checkout {
+    
+    margin: 1.2rem;
+    border-radius: 12px;
+    border: 2.1px solid #d1d1d1;
+}
+
+/*.list-product-checkout>{
+
+}*/
+.product-checkout {
+    position: relative;
+    padding: 1.2rem;
+    margin: 0.6rem;
+}
+.price-of-product-checkout {
+    width:fit-content;
+    position: absolute;
+    bottom: 9px;
+    right: 12px;
+    font-size: 1.2rem;
+}
+.product-checkout img{
+    margin:0px 9px;
+    width: 9rem;
+    float: left;
+    border-radius: 12px;
+}
+.product-checkout .title-product-checkout{
+    width: 72%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    font-size: 1.4rem;
+
+}
+.options-payment {
+    text-align:left;
+    position: relative;
+    margin: 1.2rem;
+    border-radius: 12px;
+    border: 2.1px solid #d1d1d1;
+}
+.options-payment>*{
+    margin: 12px;
+}
+.options-payment label{
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+.payment-checkout{
+    flex-grow: 1;
+}

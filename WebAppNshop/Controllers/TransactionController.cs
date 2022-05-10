@@ -12,5 +12,9 @@ namespace WebAppNshop.Controllers
         {
             return View();
         }
+        public IActionResult CheckOutForm()
+        {
+            return View("CheckOutForm");
+        }
     }
 }

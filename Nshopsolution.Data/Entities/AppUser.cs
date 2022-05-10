@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Nshopsolution.Data.Entities
 {
-    class AppUser:IdentityUser<Guid>
+    public class AppUser:IdentityUser<Guid>
     {
         public string LastName { set; get; }
         public string FirstName { set; get; }
