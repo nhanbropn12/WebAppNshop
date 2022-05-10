@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "chuoi": "Server=(LocalDB)\\NSHOPWEB;Database=Nshop;Trusted_Connection=True;"
+  }
+}
