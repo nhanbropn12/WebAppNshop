@@ -1,6 +1,8 @@
-﻿@{ 
+﻿@{
     Layout = "_NshopForUserLayout";
+
 }
+@model Nshopsolution.Data.ViewModels.LoginViewModel
 <head>
     <link type="text/css" rel="stylesheet" href="~/css/SignIn.css" />
 </head>
@@ -19,12 +21,14 @@
                 <h2>Đăng nhập tài khoản</h2>
             </div>
             <div class="form">
-                <form class="login-form" id="login-form">
-                    <input type="text" placeholder="Tên tài khoản ..." />
-                    <input type="password" placeholder="Mật khẩu ..." />
-                    <input class="subbt" type="submit" value="Sign In"  style="border:none;" />
+                <form asp-controller="Accounts" asp-action="SignIn" method="post" class="login-form" id="login-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Email" asp-validation-for="Username" type="text" placeholder="Tên tài khoản ..." />
+                    <input asp-for="Password" asp-validation-for="Password" type="password" placeholder="Mật khẩu ..." />
+                    <input class="subbt" type="submit" value="Sign In" style="border:none;" />
+                    @*<span style="color:red;">@ViewBag.err</span>*@
                 </form>
-                <input type="checkbox" id="remember" name="remember"><span style="color:#b6b6b6;font-size: 0.9em;"> Ghi nhớ đăng nhập.</span><a href="#">Quên tài khoản?</a>
+                <input asp-for="RememberMe" type="checkbox" id="remember" name="remember"><span style="color:#b6b6b6;font-size: 0.9em;"> Ghi nhớ đăng nhập.</span><a href="#">Quên tài khoản?</a>
             </div>
         </div>
     </div>

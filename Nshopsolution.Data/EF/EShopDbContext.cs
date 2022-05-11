@@ -12,6 +12,10 @@ namespace Nshopsolution.Data.EF
 {
     public class EShopDbContext : IdentityDbContext<AppUser,AppRole,Guid>
     {
+        public EShopDbContext()
+        {
+
+        }
         public EShopDbContext(DbContextOptions<EShopDbContext> options) : base(options)
         {
 
@@ -44,6 +48,7 @@ namespace Nshopsolution.Data.EF
         
 
         public DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         /*public DbSet<Product> products { get; set; } đã config nên không cần thêm vào*/
         /*public DbSet<Product> Categories{ get; set; } đã config nên không cần thêm vào*/

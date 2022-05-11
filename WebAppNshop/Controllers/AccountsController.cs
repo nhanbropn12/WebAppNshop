@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Nshopsolution.Data.EF;
 using Nshopsolution.Data.Entities;
+using Nshopsolution.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +15,7 @@ namespace WebAppNshop.Controllers
 {
     public class AccountsController : Controller
     {
+       
         private readonly ILogger<AccountsController> _logger;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
@@ -30,7 +35,7 @@ namespace WebAppNshop.Controllers
             return View("SignUp");
         }
         [HttpPost]
-        public async  Task<IActionResult> SignUp(AppUser appUserModel)
+        public async  Task<IActionResult> SignUp(RegisterViewModel appUserModel)
         {
             var user = new AppUser
             {
@@ -40,7 +45,7 @@ namespace WebAppNshop.Controllers
                 DateOfBirth=appUserModel.DateOfBirth,
                 Address=appUserModel.Address,
                 CardNumber=appUserModel.CardNumber,
-                PasswordHash=appUserModel.PasswordHash
+                PasswordHash=appUserModel.Password
             };
             var result = await _userManager.CreateAsync(user, user.PasswordHash);
             if (result.Succeeded)
@@ -56,20 +61,30 @@ namespace WebAppNshop.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
+            if(_signInManager.IsSignedIn(User))
             return View("SignIn");
+            else
+            {
+     
+             return View("SignIn");
+            }    
         }
         [HttpPost]
-        public async Task<IActionResult> SignIn(AppUser appUserModel)
+        [AllowAnonymous]
+        public async Task<IActionResult> SignIn(LoginViewModel appUserModel)//còn lỗi
         {
-            var user = await _userManager.FindByNameAsync(appUserModel.UserName);
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                var signin = await _signInManager.PasswordSignInAsync(user, user.PasswordHash, false, false);
-                if(signin.Succeeded)
+                var user = await _userManager.FindByEmailAsync(appUserModel.Email);
+                if (user != null)
                 {
-                  return  RedirectToAction("Index", "Home");
-                }
+                    var signin = await _signInManager.PasswordSignInAsync(user, user.PasswordHash, appUserModel.RememberMe, false);
+                    if (signin.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
 
+                }
             }
             return View("SignIn");
         }
