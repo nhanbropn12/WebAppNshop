@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace WebAppNshop
 {
@@ -28,15 +29,28 @@ namespace WebAppNshop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EShopDbContext>(option => option.UseInMemoryDatabase("InMemoryDB"));
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<EShopDbContext>().AddDefaultTokenProviders();
+            services.AddDbContext<EShopDbContext>(option => option.UseInMemoryDatabase("InMemoryDB")) ;
+            //services register and login
+            services.AddIdentity<AppUser, AppRole>(
+                options =>
+                {
+                    options.User.RequireUniqueEmail = false;
+                    options.SignIn.RequireConfirmedAccount = false;
+
+                }).AddEntityFrameworkStores<EShopDbContext>().AddDefaultTokenProviders();
+            string connectionString = Configuration.GetConnectionString("ConnectionString");
+            services.AddDbContext<EShopDbContext>(c => c.UseSqlServer(connectionString));
             services.AddControllersWithViews();
+            //enable dbcontext
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.ConfigureApplicationCookie(option =>
             {
                 option.Cookie.Name = "InMemoryDB";
                 option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                 option.LoginPath = "/Accounts/SignIn";
             });
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

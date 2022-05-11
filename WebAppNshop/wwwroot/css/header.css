@@ -28,7 +28,7 @@ header img {
 }
 .header-user {
     position: relative;
-    margin-left: 45px;
+    /*margin-left: 45px;*/
 }
 .header-helper {
     font-size: 1.2rem;
@@ -68,6 +68,7 @@ header img {
     letter-spacing: 0.1rem;
     font-size: 1.2rem;
     font-weight: 400;
+    min-width: 12rem;
 }
 .option-user {
    

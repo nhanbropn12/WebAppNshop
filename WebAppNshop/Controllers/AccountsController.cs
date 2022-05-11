@@ -15,7 +15,8 @@ namespace WebAppNshop.Controllers
 {
     public class AccountsController : Controller
     {
-       
+        
+        readonly EShopDbContext db = new EShopDbContext();
         private readonly ILogger<AccountsController> _logger;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
@@ -35,26 +36,32 @@ namespace WebAppNshop.Controllers
             return View("SignUp");
         }
         [HttpPost]
-        public async  Task<IActionResult> SignUp(RegisterViewModel appUserModel)
+        [AllowAnonymous]
+        public async  Task<IActionResult> SignUp(RegisterViewModel appUserModel)//nhưng không đưa xuống dữ liệu
         {
             var user = new AppUser
             {
                 Id = new Guid(),
                 FirstName = appUserModel.FirstName,
                 LastName = appUserModel.LastName,
-                DateOfBirth=appUserModel.DateOfBirth,
+                DateOfBirth= (DateTime)appUserModel.DateOfBirth,
                 Address=appUserModel.Address,
                 CardNumber=appUserModel.CardNumber,
-                PasswordHash=appUserModel.Password
+                Email=appUserModel.Email,
+                UserName=appUserModel.Email
             };
-            var result = await _userManager.CreateAsync(user, user.PasswordHash);
+            var result = await _userManager.CreateAsync(user, appUserModel.Password);
             if (result.Succeeded)
             {
-                var SignIn = await _signInManager.PasswordSignInAsync(user, user.PasswordHash, false, false);
-                if (SignIn.Succeeded)
-                {
-                    return RedirectToAction("Index","Home");
-                }
+                db.AppUsers.Add(user);
+                await db.SaveChangesAsync();
+                await _signInManager.SignInAsync(user, isPersistent: true);
+                return RedirectToAction("Index","Home");
+                
+            }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
             }
             return View("SignUp");
         }
@@ -75,17 +82,22 @@ namespace WebAppNshop.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(appUserModel.Email);
-                if (user != null)
-                {
-                    var signin = await _signInManager.PasswordSignInAsync(user, user.PasswordHash, appUserModel.RememberMe, false);
-                    if (signin.Succeeded)
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                var user = db.AppUsers.FirstOrDefault(x => x.Email == appUserModel.Email);
+                var password = await _userManager.CheckPasswordAsync(user, appUserModel.Password);
 
+                if (password)//true
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user,
+                    appUserModel.Password, appUserModel.RememberMe, false);
+                    if (result.Succeeded)
+                    {
+                       /* await _signInManager.SignInAsync(user, isPersistent: appUserModel.RememberMe);*/
+                        return RedirectToAction("Index", "Home");
+                        
+                    }
                 }
             }
+            ModelState.AddModelError("", "Invalid login attempt");
             return View("SignIn");
         }
         public async Task<IActionResult> SignOut()

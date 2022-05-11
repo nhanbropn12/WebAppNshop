@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Nshopsolution.Data.Configurations;
 using Nshopsolution.Data.Entities;
 using Nshopsolution.Data.Extention;
@@ -16,11 +17,24 @@ namespace Nshopsolution.Data.EF
         {
 
         }
-        public EShopDbContext(DbContextOptions<EShopDbContext> options) : base(options)
+        public EShopDbContext(DbContextOptions<EShopDbContext> options) 
+            : base(options)
         {
 
         }
-        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+                var connectionString = configuration.GetConnectionString("ConnectionString");
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -49,6 +63,7 @@ namespace Nshopsolution.Data.EF
 
         public DbSet<Comment> Comments { get; set; }
         public virtual DbSet<AppUser> AppUsers { get; set; }
+       
         public DbSet<Account> Accounts { get; set; }
         /*public DbSet<Product> products { get; set; } đã config nên không cần thêm vào*/
         /*public DbSet<Product> Categories{ get; set; } đã config nên không cần thêm vào*/

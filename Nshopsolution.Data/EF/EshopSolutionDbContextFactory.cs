@@ -10,7 +10,7 @@ namespace Nshopsolution.Data.EF
 {
     public class EshopSolutionDbContextFactory : IDesignTimeDbContextFactory<EShopDbContext>
     {
-        public EShopDbContext CreateDbContext(string[] args)
+        public EShopDbContext CreateDbContext(string[] args)//cần giải thích
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())

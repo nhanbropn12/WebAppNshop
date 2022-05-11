@@ -32,17 +32,17 @@
             @if (_SignInManager.IsSignedIn(User))
             {
                 <div id="menu-user-dropdown-toggle" class="menu-user-dropdown">
-                    <a href="@Url.Action("Index", "Accounts")" class="btn btn-info">Xin chào Thông tin người dùng</a>
-                    <a href="@Url.Action("Index", "Transaction")" class="btn btn-secondary">Lịch sử giao dịch</a>
+                    <a asp-controller="Accounts" asp-action="Index" class="btn btn-info">Thông tin người dùng</a>
+                    <a asp-controller="Transaction" asp-action="Index" class="btn btn-secondary">Lịch sử giao dịch</a>
                     <a href="#" class="btn btn-warning">Sản phẩm yêu thích</a>
-                    <a asp-controller="Accounts" asp-action="SignOut" href="#" class="btn btn-danger">Đăng xuất</a>
+                    <a asp-controller="Accounts" asp-action="SignOut"  class="btn btn-danger">Đăng xuất</a>
                 </div>
             }
             <a asp-controller="Accounts" asp-action="SignIn" class="btn btn-info btheader"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
             <a asp-controller="Accounts" asp-action="SignUp" class="btn btn-warning btheader"><i class="bi bi-door-open"></i>Đăng ký</a>
             @if (_SignInManager.IsSignedIn(User))
             {
-            <button class="btn btn-light user">@_UserManager.GetUserAsync(User).Result.FirstName</button>
+            <button class="btn btn-light user">@User.Identity.Name</button>
             }
             else{ 
             <button class="btn btn-light user">Tên người dùng</button>

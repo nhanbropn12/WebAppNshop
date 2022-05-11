@@ -11,10 +11,11 @@ namespace Nshopsolution.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-            builder.ToTable("AppUser");
+            builder.ToTable("AppUsers");
             builder.Property(x => x.FirstName).IsRequired();
             builder.Property(x => x.LastName).IsRequired();
             builder.Property(x => x.Address).IsRequired();
+            builder.Property(x => x.Email).IsRequired();
         }
     }
 }
