@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Nshopsolution.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,32 @@ namespace Nshopsolution.Data.Extention
             modelBuilder.Entity<Account>().HasData(
                 new Account() { Id=1,LastName="Nguyen",FirstName="NguyenTinh",Email="nguyentinh14032001@gmail.com",Address="Quy Nhon",CardNumber="1234",DateOfBirth=DateTime.Now,DateCreate=DateTime.Now}
                 );
+
+
+            Guid IdRoleAdmin = new Guid("7042C312-4894-454F-A631-B90EDD2702F4");
+            Guid IdUserAdmin = new Guid("7C158B01-5ABA-4469-BBB8-E55EA43126C6");
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppRole>().HasData(new AppRole
+            {
+                Id = IdRoleAdmin,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "Administrator role"
+            });
+            modelBuilder.Entity<AppUser>().HasData(
+                new AppUser() { Id=IdUserAdmin,FirstName="Nhân",LastName="Nguyễn",
+                UserName="nguyenhuunhan1903",Email="nguyenhuunhan1903@gmail.com",PhoneNumber="0985255602",DateOfBirth=new DateTime(2001-03-19),
+                    PasswordHash = hasher.HashPassword(null, "@Rhymastic"),
+                    SecurityStamp = string.Empty,
+                    Address="tổ 46 khu vực 9 phường Đống Đa Quy Nhơn"
+                }
+                );
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = IdRoleAdmin,
+                UserId = IdUserAdmin
+            });
             modelBuilder.Entity<Category>().HasData(
                     new Category { IdCategory = "C1", CategoryOfName = "LapTop" },
                     new Category { IdCategory = "C2", CategoryOfName = "PC" },
