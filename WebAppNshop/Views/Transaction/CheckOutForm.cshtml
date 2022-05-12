@@ -26,7 +26,23 @@
         </div>
     </div>
     <div class="payment-checkout">
-       <div class="price-checkout"></div>
-       <a href="#" class="button-66" style="width:fit-content;text-decoration:none;">Thanh toán</a>
+        <div class="address-for-deliver custom-address-for-deliver">@*From ProDuctCart view*@
+            <h2>Giao tới</h2>
+            @*<a href="#" class="change-address">Thay đổi</a>*@
+            <p>Tên người dùng<span class="vertical-line"></span>098369369396</p>
+            <textarea disabled class="address-content" cols="4" rows="4">
+                sdsadasfsadsadssafsafsafsafsfa
+            </textarea>
+        </div>
+        <div class="price-checkout">
+            <h3>Thanh toán</h3>
+            <p style="color:grey">Tạm tính  &emsp;</p><p>36.000.000đ</p><br />
+            <p>Phí vận chuyển &emsp;</p><p>40.000đ</p><br />
+            <p>Khuyến mãi &emsp;</p><p>-40.000đ</p><br />
+            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">36.000.000đ</p><br />
+            <p style="color:grey;">(Đã bao gồm VAT)</p>
+        </div>
+        <a href="#" class="button-66 payment-button" style="width:fit-content;text-decoration:none;">Đặt hàng</a>
+        <a asp-action="index" asp-controller="Home" class="button-83 payment-button">Quay lại cửa hàng</a><!--from ProductCart view-->
     </div>
 </div>

@@ -3,7 +3,7 @@
     display: flex;
 }
 .form-product-checkout {
-    width: 93rem;
+    width: 102rem;
 }
 .list-product-checkout {
     
@@ -57,4 +57,31 @@
 }
 .payment-checkout{
     flex-grow: 1;
+    
+}
+.price-checkout {
+    width: 70%;
+    text-align: center;
+    margin: 24px auto;
+    border: 0.21rem solid #d1d1d1;
+    border-radius: 18px;
+    padding: 9px;
+}
+.price-checkout p{
+    padding: 6px;
+    display: inline;
+    font-size: 1.6rem;
+}
+.payment-button {
+    margin: 12px auto !important;
+    width: 50%;
+    /* text-align: center !important; */
+    font-size: 1.4rem !important;
+    text-decoration: none;
+}
+.payment-button:hover{
+    color:blueviolet;
+}
+.custom-address-for-deliver{
+    width: 70%;
 }
