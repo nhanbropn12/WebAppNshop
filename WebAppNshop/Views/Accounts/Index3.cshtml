@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Nshopsolution.Data.Entities.Product>
+@{
     Layout = "_NshopForUserLayout";
 }
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -10,7 +11,7 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item ms-5">
-                    <button class="btn btn-primary ms-5" id="themsanpham" data-bs-toggle="modal" data-bs-target="#mdlExam">Thêm sản phẩm</button>
+                    <button class="btn btn-primary ms-5" id="addProduct" data-bs-toggle="modal" data-bs-target="#mdlExam">Thêm sản phẩm</button>
                 </li>
                 <li class="nav-item ms-5">
                     <button class="btn btn-primary" type="button">Nhập file Excel</button>
@@ -29,104 +30,161 @@
 <div>
     <table class="table table-bordered border-primary col-sm-9">
         <tr>
-            <td>Mã sản phẩm</td>
-            <td>Tên sản phẩm</td>
-            <td>Ảnh sản phẩm</td>
-            <td>Xuất xứ</td>
-            <td>Thương hiệu</td>
-            <td>Đơn giá</td>
-            <td>Số lượng</td>
-            <td>Đơn vị tính</td>
+            <td>idProduct/td>
+            <td>idCategory</td>
+            <td>productName</td>
+            <td>Quantity</td>
+            <td>OriqinalPrice</td>
+            <td>Rating</td>
+            <td>Specifions</td>
+            <td>ImageProduct</td>
+            <td>Warranty</td>
             <td></td>
         </tr>
-        <tr>
-            <td>MS101</td>
-            <td>Msi modem 14 b11sbu</td>
-            <td ><img style="height:100px" src="~/img/product/15-Laptop-Tot-nhat-2021-1.jpg" alt="" /></td>
-            <td>Đài loan</td>
-            <td>MSI</td>
-            <td>24.000.000</td>
-            <td>5</td>
-            <td>Chiếc</td>
-            <td style="text-align:center">
-                <a href="#">
-                    Sửa
-                </a>||
-                <a href="#">
-                    Xóa
-                </a>
-            </td>
-        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.idproduct</td>
+        <td>@item.IdCategory</td>
+        <td>@item.ProductName</td>
+        <td>@item.Quantity</td>
+        <td>@item.OriginalPrice</td>
+        <td>@item.Rating</td>
+        <td>@item.Specifications</td>
+        <td><img style="height:50px;width:50px;" src="~/img/product/@item.ImageProduct" /></td>
+        <td>@item.Warranty</td>
+        <td style="text-align:center">
+            <a href="#">
+                Sửa
+            </a>||
+            <a href="#">
+                Xóa
+            </a>
+        </td>
+    </tr>
+        }
     </table>
 </div>
 <script type="text/javascript">
-    //Code phần này để tui code
-    $(document).on('click', '#themsanpham', function () {
-       // $('#txtMaKhoa').attr("readonly", false);
-      //  $('#txtMaKhoa').val('');
-       // $('#txtTenKhoa').val('');
-      //  $('#txtDiaChi').val('');
-      //  $('#txtSDT').val('');
-        // Một lỗi nhỏ lưu ý
-      //  $('#kiemtra').val('');
+    function LoadDropCategory(text) {
+        $.ajax({
+            url: "@Url.Action("getDataCategory","Accounts")",
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                var obj = JSON.parse(data);
+                console.log(obj);
+                $("#select").empty();
+                if (text == "") {
+                    for (var i = 0; i < obj.length; i++) {
+                        let IdCategory = obj[i]["IdCategory"];
+                        $("#select").append("<option value=" + IdCategory + " >"
+                            + obj[i]["CategoryOfName"] + "</option>");
+                    }
+                }
+                else {
+                    for (var i = 0; i < obj.length; i++) {
+                        let IdCategory1 = obj[i]["IdCategory"];
+                        if (text == IdCategory1) {
+                            $("#select").append("<option value=" + IdCategory1 + " selected='selected'>"
+                                + obj[i]["CategoryOfName"] + "</option>");
+                        } else {
+                            $("#select").append("<option value=" + IdCategory1 + ">"
+                                + obj[i]["CategoryOfName"] + "</option>");
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    $(document).on('click', '#addProduct', function () {
+        var text = "";
+        LoadDropCategory(text);
+    });
+    $(document).on('click', '#btnSubmit', function () {
+        let IdCategory = $('#select').val();
+        let ProductName = $('#txtProductName').val();// gán vulue cho ô input txt
+        let Quantity = $('#txtQuantity').val();
+        let OriginalPrice= $('#txtOriginalPrice').val();
+        let Specifications = $('#txtSpecifications').val();
+        let ImageProduct = $('#ImageProduct').val();
+        var Warranty = $('#txtWarranty').val();
+        
+            $.ajax({
+                url: '@Url.Action("AddProduct", "Accounts")',
+                type: 'post',
+                data: {
+                  
+                     IdCategory: IdCategory,
+                     ProductName: ProductName,
+                     Quantity: Quantity,
+                     OriginalPrice: OriginalPrice,
+                     Specifications: Specifications,
+                     ImageProduct: ImageProduct,
+                     Warranty: Warranty
+                },
+                success: function (data) {
+                    //alert(data);
+                    location.reload();
+                }
+            });
+
     });
 </script>
-    <div class="modal" id="mdlExam">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<div class="modal" id="mdlExam">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title" id="mdlExamLabel">Thêm sản phẩm</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body" style="display: flex;flex-direction: column;align-items: center; justify-content:center">
-                    <input type="hidden" id="kiemtra" value="">
-                    <form action="Create">
-                        <div class="form-group">
-
-                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Mã sản phẩm</label>
-                            <textarea onkeydown="kt()" style="width: 330px;" class="form-control" id="txtMaSanPham" rows="1"></textarea>
-                        </div>
-                        <span id="name-check"></span>
-                        <div class="form-group">
-                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Tên sản phẩm</label>
-                            <textarea style="width: 330px;" class="form-control" id="txtTenSanPham" rows="1"></textarea>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="exampleFormControlFile1">Ảnh sản phẩm</label>
-                            <input type="file" class="form-control-file" id="anh">
-                        </div>
-                        <div class="form-group">
-                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Xuất sứ</label>
-                            <textarea style="width: 330px;" class="form-control" id="txtXuatXu" rows="1"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Thương hiệu</label>
-                            <textarea style="width: 330px;" class="form-control" id="txtThuongHieu" rows="1"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Đơn giá</label>
-                            <textarea style="width: 330px;" class="form-control" id="txtDongia" rows="1"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Số lượng</label>
-                            <textarea style="width: 330px;" class="form-control" id="txtSoLuong" rows="1"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Đơn vị tính</label>
-                            <textarea style="width: 330px;" class="form-control" id="txtDonViTinh" rows="1"></textarea>
-                        </div>
-                    </form>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <a class="btn btn-success" id="btnSubmit">Xác nhận</a>
-                        </div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="mdlExamLabel">Thêm sản phẩm</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
             </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" style="display: flex;flex-direction: column;align-items: center; justify-content:center">
+                <input type="hidden" id="kiemtra" value="">
+                <form action="Create">
+                    <span id="name-check"></span>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">IdCategory</label>
+                        <select class="form-select" id="select" aria-label="Default select example">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">ProductName</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtProductName" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Quantity</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtQuantity" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">OriginalPrice</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtOriginalPrice" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Specifications</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtSpecifications" rows="1"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlFile1">ImageProduct</label>
+                        <input type="file" class="form-control-file" id="ImageProduct">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Warranty</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtWarranty" rows="1"></textarea>
+                    </div>
+                </form>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <a class="btn btn-success" id="btnSubmit">Xác nhận</a>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 

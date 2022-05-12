@@ -1,4 +1,5 @@
-﻿<div class="Main-Product-List">
+﻿@model IEnumerable<Nshopsolution.Data.Entities.Product>
+<div class="Main-Product-List">
     <div class="window-product">
         <div class="tab-search-product">
             <div class="input-search-group">
@@ -14,7 +15,7 @@
             </div>
         </div>
         <div class="Flex-Product">
-            @for (int i = 0; i < 12; i++)
+            @foreach (var item in Model)
             {
 
                 <div class="box-product flex-box">
@@ -25,11 +26,11 @@
                         <span class="like-product-small"><i class="bi bi-heart"></i></span>
                         <img class="image-product-small" src="~/img/product/man-hinh-ips-va-tn-tren-laptop-khac-nhau-nhu-the-nao-uu-nhuoc-diem-moi-loai-va-cach-nhan-biet-4.jpg">
                         <div class="name-product-small">Laptop HP Gaming VICTUS 16-e0175AX R5 5600H/8GB/512GB/RTX 3050Ti 4GB/16.1" FHD/Win 11 </div>
-                        <div class="price-product-small">30000000</div>
+                        <div class="price-product-small">@item.ProductName</div>
                         <a class="buynow-product-small button-29">Thêm giỏ hàng</a>
                     </div>
                 </div>
-                
+
             }
         </div>
         <div class="flex-pagination">
@@ -43,7 +44,7 @@
                 <li><i class="bi bi-chevron-double-right"></i></li>
                 <li class="bar-pagination"></li>
             </ul>
-           
+
         </div>
     </div>
     <div class="Image-Advertisement-3">

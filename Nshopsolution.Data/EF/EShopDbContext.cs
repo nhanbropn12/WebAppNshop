@@ -65,6 +65,8 @@ namespace Nshopsolution.Data.EF
         public virtual DbSet<AppUser> AppUsers { get; set; }
        
         public DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         /*public DbSet<Product> products { get; set; } đã config nên không cần thêm vào*/
         /*public DbSet<Product> Categories{ get; set; } đã config nên không cần thêm vào*/
     }
