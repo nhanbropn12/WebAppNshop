@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Nshopsolution.Data.Entities
 {
-    class Category
+    public class Category
     {
         public string IdCategory { get; set; }
         public string CategoryOfName { get; set; }

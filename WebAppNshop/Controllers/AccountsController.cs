@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Nshopsolution.Data.EF;
 using Nshopsolution.Data.Entities;
+using Nshopsolution.Data.Enum;
 using Nshopsolution.Data.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 //chưa inject các usermanage
@@ -76,7 +79,43 @@ namespace WebAppNshop.Controllers
              return View("SignIn");
             }    
         }
+        public IActionResult Index3()
+        {
+            var product = db.Products;
+            return View("Index3", product);
+        }
+        [HttpGet]
+        public JsonResult getDataCategory()
+        {
+            var lists = db.Categories;
+            var a = JsonConvert.SerializeObject(lists);
+            return Json(a);
+        }
+
         [HttpPost]
+        public void AddProduct(string IdCategory, string ProductName, string Quantity, string OriginalPrice, string Specifications, string ImageProduct, string Warranty)
+        {
+            try
+            {
+                       Product product = new Product();
+                        product.idproduct = new Guid();
+                        product.IdCategory = IdCategory;
+                        product.ProductName = ProductName;
+                        product.Quantity = int.Parse(Quantity);
+                        product.OriginalPrice = decimal.Parse(OriginalPrice);
+                        product.Rating =Rate.fiveStar;
+                        product.Specifications = Specifications;
+                        product.ImageProduct = Path.GetFileName(ImageProduct);
+                        product.Warranty = int.Parse(Warranty);
+                        db.Products.Add(product);
+                        db.SaveChanges();
+
+            }
+            catch
+            {
+            }
+
+        }
         [AllowAnonymous]
         public async Task<IActionResult> SignIn(LoginViewModel appUserModel)//còn lỗi
         {
@@ -108,10 +147,6 @@ namespace WebAppNshop.Controllers
             public IActionResult Index2()
         {
             return View("Index2");
-        }
-        public IActionResult Index3()
-        {
-            return View("Index3");
         }
     }
 }

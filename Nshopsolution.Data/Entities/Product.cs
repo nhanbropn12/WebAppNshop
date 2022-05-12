@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Nshopsolution.Data.Entities
 {
-    class Product
+   public class Product
     {
         
         public Guid idproduct { get; set; }
@@ -24,6 +24,5 @@ namespace Nshopsolution.Data.Entities
         id danh mục*/
         public int Warranty { get; set; }//thời gian bảo hành
         public Category Category { get; set; }
-
     }
 }

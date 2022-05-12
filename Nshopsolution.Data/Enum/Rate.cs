@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Nshopsolution.Data.Enum
 {
-    enum Rate
+    public enum Rate
     {
         oneStar,
         twoStar,
