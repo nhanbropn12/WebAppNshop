@@ -32,6 +32,10 @@ namespace WebAppNshop.Controllers
                 return data;
             }
         }
+        public IActionResult RemoveToCart(Guid id)//chưa làm
+        {
+            return View();
+        }
         public IActionResult AddToCart(Guid id)
         {
             var myCart = Carts;
