@@ -15,6 +15,7 @@ namespace Nshopsolution.Data.Configurations
             builder.HasKey(x => x.idproduct);
             // KhoÁ PHỤ
             builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.IdCategory);
+            builder.Property(x => x.discount).HasMaxLength(50).HasDefaultValue(0);
             
         }
     }

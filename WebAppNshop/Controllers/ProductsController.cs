@@ -12,10 +12,7 @@ namespace WebAppNshop.Controllers
         {
             return View();
         }
-        public IActionResult ProductCart()
-        {
-            return View("ProductCart");
-        }
+       
         public IActionResult ArticleProduct()
         {
             return View("ArticleProduct");

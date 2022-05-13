@@ -49,7 +49,8 @@ namespace WebAppNshop
                 option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                 option.LoginPath = "/Accounts/SignIn";
             });
-            
+            //add session
+            services.AddSession();
             
         }
 
@@ -68,7 +69,7 @@ namespace WebAppNshop
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

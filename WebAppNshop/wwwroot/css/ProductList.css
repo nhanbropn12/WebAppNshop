@@ -48,9 +48,9 @@
     
 }
 .flex-box {
-    flex: 1 0 21%; /* explanation below */
+    /*flex: 1 0 21%;*/ /* explanation below */
+    flex: 0 0 23%;
     margin: 9px;
-   
 }
 .Image-Advertisement-3 img{ 
    display: block;

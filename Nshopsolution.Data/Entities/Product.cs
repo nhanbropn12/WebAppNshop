@@ -13,6 +13,7 @@ namespace Nshopsolution.Data.Entities
         public string IdCategory { get; set; }
         public string ProductName { get; set; }
         public int Quantity { get; set; }//Số lượng hàng
+        public int discount { get; set; }//Giảm giá
         public decimal OriginalPrice { get; set; }//Giá gốc
         /*public int QuantityOfComment*/
         public Rate Rating { get; set; }//đánh giá sản phẩm

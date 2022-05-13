@@ -23,7 +23,6 @@
 
 .item-product-cart {
     padding: 20px 30px;
-    height: 120px;
     display: flex;
 }
     .item-product-cart > * {
@@ -85,6 +84,7 @@
     }
 }
 .image-item-cart {
+    min-width: 60px;
     margin-right: 50px;
 }
 

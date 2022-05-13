@@ -1,13 +1,18 @@
 ﻿@{
     Layout = "_NShopForUserLayout";
 }
+@model IEnumerable<CartItemViewModel>
 <div class="Main-Cart-Product">
     <div class="shopping-cart">
         <!-- Title -->
         <div class="title-cart">
-            Shopping Bag
+            Giỏ hàng
         </div>
-        @for (int i = 0; i < 6; i++)
+        @if (Model.Count()==0) {
+            <img src="~/img/Cart/empty-cart.png" style="width:100%;" />
+        }
+        else {
+        @foreach(var item in Model)
         {
             <!-- Product #1 -->
             <div class="item-product-cart">
@@ -17,28 +22,28 @@
                 </div>
 
                 <div class="image-item-cart">
-                    <img style="width: 60px;" src="~/img/product/53013_mouse_logitech_g102_lightsync_rgb_white_0002_3.jpg" alt="" />
+                    <img style="width: 60px;" src="@item.Image" alt="" />
                 </div>
 
                 <div class="description-item">
-                    <span>Common Projects</span>
-                    <span>Bball High</span>
-                    <span>White</span>
+                    <span>@item.ProductName</span>
+@*                    <span>White</span>*@
                 </div>
 
                 <div class="quantity-of-item">
                     <button class="plus-btn" type="button" name="button">
                         <img src="~/SVG/plus.svg" alt="" />
                     </button>
-                    <input type="text" name="name" value="1">
+                    <input type="text" name="name" value="@item.Quantity">
                     <button class="minus-btn" type="button" name="button">
                         <img src="~/SVG/minus.svg" alt="" />
                     </button>
                 </div>
 
-                <div class="total-price-item">$549</div>
+                <div class="total-price-item">@item.ToTalPrice</div>
             </div>
         }
+     }
         <!-- Product #2 -->
         <!--<div class="item">
             <div class="buttons">
@@ -99,14 +104,14 @@
         </div>-->
     </div>
     <div class="panel-payment">
-       <div class="address-for-deliver">
-           <h2>Giao tới</h2>
-           <a href="#" class="change-address">Thay đổi</a>
-           <p>Tên người dùng<span class="vertical-line"></span>098369369396</p>
-           <textarea disabled class="address-content" cols="4" rows="4">
+        <div class="address-for-deliver">
+            <h2>Giao tới</h2>
+            <a href="#" class="change-address">Thay đổi</a>
+            <p>Tên người dùng<span class="vertical-line"></span>098369369396</p>
+            <textarea disabled class="address-content" cols="4" rows="4">
                 sdsadasfsadsadssafsafsafsafsfa
             </textarea>
-       </div>
+        </div>
         <div class="code-promotion">
             <p>Nhập mã khuyến mãi</p>
             <input type="text" class="form-control input-promotion" placeholder="Nhập mã giảm giá ...." />
@@ -114,12 +119,13 @@
         </div>
         <div class="label-provisional-price">
             <h3>Thanh toán</h3>
-            <p style="color:grey">Tạm tính  &emsp;</p><p>36.000.000đ</p><br/>
-            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">36.000.000đ</p><br/>
+            <p style="color:grey">Tạm tính  &emsp;</p><p>36.000.000đ</p><br />
+            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">36.000.000đ</p><br />
             <p style="color:grey;">(Đã bao gồm VAT)</p>
         </div>
-        <a asp-action="CheckOutForm" asp-controller="Transaction"  class="button-9 btn-payment">Thanh toán</a>
+        <a asp-action="CheckOutForm" asp-controller="Transaction" class="button-9 btn-payment">Thanh toán</a>
         <a asp-action="index" asp-controller="Home" class="button-83 btn-payment">Quay lại cửa hàng</a>
 
     </div>
 </div>
+
