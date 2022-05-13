@@ -12,7 +12,7 @@ namespace Nshopsolution.Data.Extention
     {
         public static string ToVnd(this double giaTri)
         {
-            return $"{giaTri:##,##0.00}";
+            return $"{giaTri:##,##0.00} đ";
         }
 
         public static void Set<T>(this ISession session, string key, T value)

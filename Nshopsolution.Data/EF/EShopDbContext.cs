@@ -20,7 +20,7 @@ namespace Nshopsolution.Data.EF
         public EShopDbContext(DbContextOptions<EShopDbContext> options) 
             : base(options)
         {
-
+            
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,7 +37,6 @@ namespace Nshopsolution.Data.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             //configuration using fluent api
             //configuration identity
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());

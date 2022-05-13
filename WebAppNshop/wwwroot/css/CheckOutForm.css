@@ -16,6 +16,7 @@
 
 }*/
 .product-checkout {
+    display:flex;
     position: relative;
     padding: 1.2rem;
     margin: 0.6rem;
@@ -25,13 +26,19 @@
     position: absolute;
     bottom: 9px;
     right: 12px;
-    font-size: 1.2rem;
+    font-weight: 600;
+    font-size: 1.4rem;
 }
 .product-checkout img{
     margin:0px 9px;
     width: 9rem;
     float: left;
     border-radius: 12px;
+}
+.abosolute-quantity {
+    position: absolute;
+    left: 120px;
+    bottom: 12px;
 }
 .product-checkout .title-product-checkout{
     width: 72%;

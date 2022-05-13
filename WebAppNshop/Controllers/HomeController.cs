@@ -21,9 +21,10 @@ namespace WebAppNshop.Controllers
             var product = db.Products;
             return View("ProductList",product);
         }
-        public IActionResult DetailProduct()
+        public IActionResult DetailProduct(Guid id)
         {
-            return View("DetailProduct");
+            var product = db.Products.Find(id);
+            return View("DetailProduct",product);
         }
 
         public IActionResult Privacy()

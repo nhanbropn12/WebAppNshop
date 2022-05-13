@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "_NShopForUserLayout";
+    double TotalPrice = 0;
 }
 @model IEnumerable<CartItemViewModel>
 <div class="Main-Cart-Product">
@@ -42,8 +43,9 @@
                     </button>
                 </div>
 
-                <div class="total-price-item">@item.ToTalPrice</div>
+                <div class="total-price-item">@SessionExtensions.ToVnd((double)item.ToTalPrice)</div>
             </div>
+            TotalPrice += item.ToTalPrice;
         }
      }
         <!-- Product #2 -->
@@ -121,8 +123,9 @@
         </div>
         <div class="label-provisional-price">
             <h3>Thanh toán</h3>
-            <p style="color:grey">Tạm tính  &emsp;</p><p>36.000.000đ</p><br />
-            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">36.000.000đ</p><br />
+            
+            <p style="color:grey">Tạm tính  &emsp;</p><p>@SessionExtensions.ToVnd(TotalPrice)</p><br />
+            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">@SessionExtensions.ToVnd(TotalPrice)</p><br />
             <p style="color:grey;">(Đã bao gồm VAT)</p>
         </div>
         <a asp-action="CheckOutForm" asp-controller="Transaction" class="button-9 btn-payment">Thanh toán</a>

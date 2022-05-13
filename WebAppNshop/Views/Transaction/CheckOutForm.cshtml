@@ -2,6 +2,9 @@
     Layout = "_NshopForUserLayout";
 }
 @model IEnumerable<CartItemViewModel>
+@{ 
+    double TotalPrice = 0;
+}
 <div class="Form-CheckOut">
     <div class="form-product-checkout">
         <h1>Thanh toán & mua hàng</h1>
@@ -11,9 +14,10 @@
             <div class="product-checkout">
                 <img src="@item.Image" />
                 <p class="title-product-checkout">@item.ProductName</p>
-                <p>SL:@item.Quantity</p>
-                <p class="price-of-product-checkout">@item.ToTalPrice</p>
+                <p class="abosolute-quantity">SL:@item.Quantity</p>
+                <p class="price-of-product-checkout">@SessionExtensions.ToVnd((double)item.ToTalPrice)</p>
             </div>
+                TotalPrice += item.ToTalPrice;
             }
         </div>
         <div class="options-payment">
@@ -37,10 +41,10 @@
         </div>
         <div class="price-checkout">
             <h3>Thanh toán</h3>
-            <p style="color:grey">Tạm tính  &emsp;</p><p>36.000.000đ</p><br />
+            <p style="color:grey">Tạm tính  &emsp;</p><p>@SessionExtensions.ToVnd(TotalPrice)</p><br />
             <p>Phí vận chuyển &emsp;</p><p>40.000đ</p><br />
             <p>Khuyến mãi &emsp;</p><p>-40.000đ</p><br />
-            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">36.000.000đ</p><br />
+            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">@SessionExtensions.ToVnd(TotalPrice)</p><br />
             <p style="color:grey;">(Đã bao gồm VAT)</p>
         </div>
         <a asp-action="Pay" class="button-66 payment-button" style="width:fit-content;text-decoration:none;">Đặt hàng</a>

@@ -1,119 +1,161 @@
 ﻿@*Thiết kế thêm cửa số bình luận đánh giá sản phẩm*@
-<div class="Detail-Product">@*flex*@
-    <div class="main-detail">
-        <div class="main-detail-product">@*flex*@
-            <div class="img-and-information-product">
-               <img class="img-detail-product" src="~/img/product/15-Laptop-Tot-nhat-2021-1.jpg"/>
-               <div class="information-detail-product">
-                   <b>Màn hình: </b>	14.0 inch, 1920 x 1080 Pixels, IPS, 60 Hz, Acer ComfyView Anti-glare LED-backlit<br/>
-                   <b>CPU</b>	Intel, Core i5, 1135G7<br />
-                   <b>RAM</b>	8 GB, DDR4, 2666 MHz<br />
-                   <b>Ổ cứng</b>	SSD 512 GB<br />
-                   <b>Đồ họa</b>	Intel Iris Xe Graphics<br />
-                   <b>Hệ điều hành</b>	Windows 11 Home Single Language<br />
-               </div>
-                <a asp-controller="Products" asp-action="ArticleProduct" id="button-link-to-post" class="btn btn-success" ><i class="bi bi-pencil-square"></i>Chi tiết bài viết</a>
-            </div>
-            <div class="name-and-reviews-product">
-                <div class="name-detail-product">
-                    Laptop Acer Spin 5 SP513-52N-556V (NX.GR7SV.004) (13.3" FHD/i5-8250U/8GB/UHD 620/Win10/1.5 kg)
-                </div>
-                <div class="reviews-detail-product">
-                    <span>Đánh giá: </span>
-                    <div class="review-star">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                    </div>
-                    <span style="color:rebeccapurple;">Bình luận: </span><p>121</p>
-                    <span style="color:var(--blue-color-1);"><i class="bi bi-eye"></i> </span><p>21321</p>
-                </div>
-                <div class="price-detail-product">
+@model Product
+@using Nshopsolution.Data.Enum;
+@{ Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
-                    <h1>21.900.000 đ giảm -15%</h1>
-                    <div class="tax-and-guarantee-product">
-                        <button class="button-2">Đã có VAT</button>
-                        <button class="button-2">Bảo hành 24 tháng</button>
-                    </div>
-                    <a href="#"><i class="bi bi-heart"></i></a>
-                </div>
-                <div class="options-buy-product">
-                    <a href="#" class="button-37"><i class="bi bi-cart-plus"></i>Thêm vào giỏ hàng</a>
-                    <a href="#" class="button-66"><i class="bi bi-credit-card-2-front"></i>Thanh toán ngay</a>
-                    <a href="#" class="button-83"><i class="bi bi-telephone"></i>Liên hệ</a>
-                </div>
-            </div>
-           
+    try
+    {
+        dictionary = Model.Specifications.Split(new[] {';'}, StringSplitOptions.RemoveEmptyEntries)
+    .Select(part => part.Split('='))
+    .ToDictionary(split => split[0], split => split[1]);
+        @*if(dictionary.Count()==0)
+            dictionary = Model.Specifications.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+       .Select(part => part.Split(':'))
+       .ToDictionary(split => split[0], split => split[1]);*@
+    }
+    catch (Exception e)
+    {
+        dictionary = null;
+    }
+    var priceDiscount = Model.OriginalPrice - Model.OriginalPrice * (((decimal)Model.discount) / 100);
+    }
+<div class="Detail-Product">
+    @*flex*@
+<div class="main-detail">
+    <div class="main-detail-product">
+        @*flex*@
+    <div class="img-and-information-product">
+        <img class="img-detail-product" src="@Model.ImageProduct" />
+        <div class="information-detail-product">
+             @if(dictionary != null) {
+                 int i = 0;
+                 @foreach (var item in dictionary) {
+                @if (i<6)
+                {
+                <b>@item.Key </b>	@item.Value<br />
+                    i++;
+                }
+
+            @*<b>CPU</b>	Intel, Core i5, 1135G7<br />
+            <b>RAM</b>	8 GB, DDR4, 2666 MHz<br />
+            <b>Ổ cứng</b>	SSD 512 GB<br />
+            <b>Đồ họa</b>	Intel Iris Xe Graphics<br />
+            <b>Hệ điều hành</b>	Windows 11 Home Single Language<br />*@
+                }
+              }
         </div>
-        
-        <div class="comment-of-product">
-            <div class="tab-menu-comment">
-                <div class="fillter-comment">
-                    <h2>Nhận xét đánh giá</h2>
-                    <span>Lọc xem theo</span>
-                    <a href="#" class="button-2">Mới nhất</a>
-                    <a href="#" class="button-2">Đã mua hàng</a>
-                    <a href="#" class="button-2">Đánh giá cao</a>
-                    <a href="#" class="button-2">Đánh giá thấp</a>
+        <a asp-controller="Products" asp-action="ArticleProduct" id="button-link-to-post" class="btn btn-success"><i class="bi bi-pencil-square"></i>Chi tiết bài viết</a>
+    </div>
+    <div class="name-and-reviews-product">
+        <div class="name-detail-product">
+            @Model.ProductName
+        </div>
+        <div class="reviews-detail-product">
+            <span>Đánh giá: </span>
+            <div class="review-star">
+                @for (int i = 0; i < 5; i++)
+                {//in ra sao danh gia
+                    @if (i < Convert.ToInt32(Model.Rating))
+                    {
+                        <i class="bi bi-star-fill"></i>
+                    }
+                    else
+                    {
+                        <i class="bi bi-star"></i>
+                    }
+                }
+                @* <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>*@
+            </div>
+            <span style="color:rebeccapurple;">Bình luận: </span><p>0</p>
+            <span style="color:var(--blue-color-1);"><i class="bi bi-eye"></i> </span><p>0</p>
+        </div>
+        <div class="price-detail-product">
+
+            <h1>@SessionExtensions.ToVnd((double)priceDiscount)<span style=" text-decoration: line-through;">@SessionExtensions.ToVnd((double)Model.OriginalPrice) Đ</span> giảm -@Model.discount%</h1>
+            <div class="tax-and-guarantee-product">
+                <button class="button-2">Đã có VAT</button>
+                <button class="button-2">Bảo hành @Model.Warranty tháng</button>
+            </div>
+            <a href="#"><i class="bi bi-heart"></i></a>
+        </div>
+        <div class="options-buy-product">
+            <a href="#" class="button-37"><i class="bi bi-cart-plus"></i>Thêm vào giỏ hàng</a>
+            <a href="#" class="button-66"><i class="bi bi-credit-card-2-front"></i>Thanh toán ngay</a>
+            <a href="#" class="button-83"><i class="bi bi-telephone"></i>Liên hệ</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="comment-of-product">
+    <div class="tab-menu-comment">
+        <div class="fillter-comment">
+            <h2>Nhận xét đánh giá</h2>
+            <span>Lọc xem theo</span>
+            <a href="#" class="button-2">Mới nhất</a>
+            <a href="#" class="button-2">Đã mua hàng</a>
+            <a href="#" class="button-2">Đánh giá cao</a>
+            <a href="#" class="button-2">Đánh giá thấp</a>
+        </div>
+        <div class="options-comment">
+            <div class="reviews-comment">
+                <h1>4</h1>
+                <div class="sum-of-star-comment">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
                 </div>
-                <div class="options-comment">
-                    <div class="reviews-comment">
-                        <h1>4</h1>
-                        <div class="sum-of-star-comment">
+                <h3>Bình luận: 121</h3>
+            </div>
+            <a href="#popup1" class="button-32"><i class="bi bi-pencil-fill"></i>Bình luận và đánh giá</a>
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <div class="file-upload">
+                        <input type="file" accept="image/x-png,image/gif,image/jpeg" onchange="loadFile(event)" />
+                        <i class="bi bi-cloud-arrow-up"></i>
+                    </div>
+                    <img src="@Model.ImageProduct" />
+                    <h4> @Model.ProductName</h4>
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                        <h1>đánh giá</h1>
+                        <div class="star-rating">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star"></i>
                         </div>
-                        <h3>Bình luận: 121</h3>
-                    </div>
-                    <a href="#popup1" class="button-32"><i class="bi bi-pencil-fill"></i>Bình luận và đánh giá</a>
-                    <div id="popup1" class="overlay">
-                        <div class="popup">
-                            <div class="file-upload">
-                                <input type="file" accept="image/x-png,image/gif,image/jpeg" onchange="loadFile(event)"/>
-                                <i class="bi bi-cloud-arrow-up"></i>
-                            </div>
-                            <img src="~/img/product/15-Laptop-Tot-nhat-2021-1.jpg"/>
-                            <h4> Laptop Acer Spin 5 SP513-52N-556V (NX.GR7SV.004) (13.3" FHD/i5-8250U/8GB/UHD 620/Win10/1.5 kg)</h4>
-                            <a class="close" href="#">&times;</a>
-                            <div class="content">
-                                <h1>đánh giá</h1>
-                                <div class="star-rating">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star"></i>
-                                </div>
-                                <div class="img-and-letter-comment">
-                                    <img id="output-img-comment" src="~/img/default-store-350x350.jpg" />
-                                    <textarea placeholder="VIết đánh giá sản phẩm" cols="30" rows="7"></textarea>
-                                </div>
-                                <center><a class="button-32">Gửi đánh giá</a></center>
-                                
-                            </div>
+                        <div class="img-and-letter-comment">
+                            <img id="output-img-comment" src="~/img/default-store-350x350.jpg" />
+                            <textarea placeholder="VIết đánh giá sản phẩm" cols="30" rows="7"></textarea>
                         </div>
+                        <center><a class="button-32">Gửi đánh giá</a></center>
+
                     </div>
                 </div>
             </div>
-            <div class="list-comment">list comment</div>
         </div>
     </div>
-    <div class="policy-product">
-        <div class="content-policy-product">
-            <span style="font-weight:600;padding: 6px;">Miễn phí giao hàng</span>
-            <hr class="style-hr" />
-            -Miễn phí giao hàng cho đơn hàng trên 800k<br/>
-            -Cam kết hàng chính hãng<br />
-            -Đổi trả trong vòng 10 ngày<br/>
-            <hr class="style-hr"/>
-            Dịch vụ khác<br />
-            Sửa chữa 150k<br />
-            Vệ sinh máy tính, laptop tại nhà
-        </div>
+    <div class="list-comment">list comment</div>
+</div>
+</div>
+<div class="policy-product">
+    <div class="content-policy-product">
+        <span style="font-weight:600;padding: 6px;">Miễn phí giao hàng</span>
+        <hr class="style-hr" />
+        -Miễn phí giao hàng cho đơn hàng trên 800k<br />
+        -Cam kết hàng chính hãng<br />
+        -Đổi trả trong vòng 10 ngày<br />
+        <hr class="style-hr" />
+        Dịch vụ khác<br />
+        Sửa chữa 150k<br />
+        Vệ sinh máy tính, laptop tại nhà
     </div>
+</div>
 </div>

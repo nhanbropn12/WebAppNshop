@@ -17,7 +17,7 @@ namespace Nshopsolution.Data.Configurations
             //khoa ngoai
             /* builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.IdCategory);*/
             builder.HasOne(x => x.AppUser).WithMany(x => x.Orders).HasForeignKey(x => x.UserId);
-            builder.Property(x => x.CreateDay).HasDefaultValue(DateTime.Now);
+            builder.Property(x => x.CreateDay).HasDefaultValue((DateTime)DateTime.Now);
             builder.Property(x => x.status).HasDefaultValue(Status.Processing);
            
         }
