@@ -25,5 +25,6 @@ namespace Nshopsolution.Data.Entities
         id danh mục*/
         public int Warranty { get; set; }//thời gian bảo hành
         public Category Category { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -1,17 +1,18 @@
 ﻿@{ 
     Layout = "_NshopForUserLayout";
 }
+@model IEnumerable<CartItemViewModel>
 <div class="Form-CheckOut">
     <div class="form-product-checkout">
         <h1>Thanh toán & mua hàng</h1>
         <div class="list-product-checkout">
-            @for (int i = 0; i < 3; i++)
+            @foreach(var item in Model)
             {
             <div class="product-checkout">
-                <img src="~/img/product/Laptop-Asus-TUF-Gaming-FX506LH-HN002T-i5-10300H-xam-6.png" />
-                <p class="title-product-checkout">Laptop ACER Nitro 5 AN515-45-R6EV NH.QBMSV.006 ( 15.6" Full HD/ 144Hz/AMD Ryzen 5 5600H/8GB/512GB SSD/NVIDIA GeForce GTX 1650/Windows 11 Home/2.2kg)</p>
-                <p>SL:1</p>
-                <p class="price-of-product-checkout">31.000.000đ</p>
+                <img src="@item.Image" />
+                <p class="title-product-checkout">@item.ProductName</p>
+                <p>SL:@item.Quantity</p>
+                <p class="price-of-product-checkout">@item.ToTalPrice</p>
             </div>
             }
         </div>
@@ -42,7 +43,7 @@
             <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">36.000.000đ</p><br />
             <p style="color:grey;">(Đã bao gồm VAT)</p>
         </div>
-        <a href="#" class="button-66 payment-button" style="width:fit-content;text-decoration:none;">Đặt hàng</a>
+        <a asp-action="Pay" class="button-66 payment-button" style="width:fit-content;text-decoration:none;">Đặt hàng</a>
         <a asp-action="index" asp-controller="Home" class="button-83 payment-button">Quay lại cửa hàng</a><!--from ProductCart view-->
     </div>
 </div>

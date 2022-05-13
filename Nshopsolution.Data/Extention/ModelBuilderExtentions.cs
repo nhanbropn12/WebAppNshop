@@ -28,10 +28,13 @@ namespace Nshopsolution.Data.Extention
             });
             modelBuilder.Entity<AppUser>().HasData(
                 new AppUser() { Id=IdUserAdmin,FirstName="Nhân",LastName="Nguyễn",
-                UserName="nguyenhuunhan1903",Email="nguyenhuunhan1903@gmail.com",PhoneNumber="0985255602",DateOfBirth=new DateTime(2001-03-19),
+                UserName= "nguyenhuunhan1903@gmail.com",
+                    Email="nguyenhuunhan1903@gmail.com",PhoneNumber="0985255602",DateOfBirth=new DateTime(2001-03-19),
                     PasswordHash = hasher.HashPassword(null, "@Rhymastic"),
                     SecurityStamp = string.Empty,
-                    Address="tổ 46 khu vực 9 phường Đống Đa Quy Nhơn"
+                    NormalizedEmail="NGUYENHUUNHAN1903@GMAIL.COM",
+                    NormalizedUserName= "NGUYENHUUNHAN1903@GMAIL.COM",
+                    Address ="tổ 46 khu vực 9 phường Đống Đa Quy Nhơn"
                 }
                 );
 

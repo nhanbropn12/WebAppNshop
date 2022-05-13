@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nshopsolution.Data.EF;
 
 namespace Nshopsolution.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    partial class EShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220513092416_OrderAndOrderDetail")]
+    partial class OrderAndOrderDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,8 +162,8 @@ namespace Nshopsolution.Data.Migrations
                             Id = 1,
                             Address = "Quy Nhon",
                             CardNumber = "1234",
-                            DateCreate = new DateTime(2022, 5, 13, 17, 37, 21, 343, DateTimeKind.Local).AddTicks(9073),
-                            DateOfBirth = new DateTime(2022, 5, 13, 17, 37, 21, 343, DateTimeKind.Local).AddTicks(8765),
+                            DateCreate = new DateTime(2022, 5, 13, 16, 24, 16, 106, DateTimeKind.Local).AddTicks(7083),
+                            DateOfBirth = new DateTime(2022, 5, 13, 16, 24, 16, 106, DateTimeKind.Local).AddTicks(6755),
                             Email = "nguyentinh14032001@gmail.com",
                             FirstName = "NguyenTinh",
                             LastName = "Nguyen"
@@ -209,7 +211,7 @@ namespace Nshopsolution.Data.Migrations
                         new
                         {
                             Id = new Guid("7042c312-4894-454f-a631-b90edd2702f4"),
-                            ConcurrencyStamp = "f8608a42-1a81-4f10-b670-3a182f44d3bb",
+                            ConcurrencyStamp = "b11dd88f-3d93-429e-ae57-9f88300c53c7",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -293,16 +295,14 @@ namespace Nshopsolution.Data.Migrations
                             Id = new Guid("7c158b01-5aba-4469-bbb8-e55ea43126c6"),
                             AccessFailedCount = 0,
                             Address = "tổ 46 khu vực 9 phường Đống Đa Quy Nhơn",
-                            ConcurrencyStamp = "a7039be4-721e-4936-bc78-ac6849fc90ed",
+                            ConcurrencyStamp = "44705bf0-2d60-4cff-807f-f58971e7cb1e",
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1979),
                             Email = "nguyenhuunhan1903@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Nhân",
                             LastName = "Nguyễn",
                             LockoutEnabled = false,
-                            NormalizedEmail = "NGUYENHUUNHAN1903@GMAIL.COM",
-                            NormalizedUserName = "NGUYENHUUNHAN1903@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJSHtxjY5xNIawUQaVFrwpWarhJw3FjrTeUAhDvocceVSpw0Xwang3OGaKBunfqjSA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJcgDJFL4IfnOVkdWAqz9gaMT3X1pzW+OYOBBqfL8NrWbR8DUS+z4ybyCWm2dYzHVg==",
                             PhoneNumber = "0985255602",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
@@ -414,7 +414,10 @@ namespace Nshopsolution.Data.Migrations
                     b.Property<DateTime>("CreateDay")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 13, 17, 37, 21, 338, DateTimeKind.Local).AddTicks(8142));
+                        .HasDefaultValue(new DateTime(2022, 5, 13, 16, 24, 16, 101, DateTimeKind.Local).AddTicks(1513));
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");

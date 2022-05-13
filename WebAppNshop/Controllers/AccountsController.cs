@@ -136,7 +136,7 @@ namespace WebAppNshop.Controllers
                     }
                 }
             }
-            ModelState.AddModelError("", "Invalid login attempt");
+            ModelState.AddModelError("", "Không đăng nhập được. Kiểm tra lại!");
             return View("SignIn");
         }
         public async Task<IActionResult> SignOut()

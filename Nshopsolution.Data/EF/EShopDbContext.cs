@@ -48,6 +48,8 @@ namespace Nshopsolution.Data.EF
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderDetailCofiguration());
 
             //configuration identity 2
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
@@ -67,6 +69,8 @@ namespace Nshopsolution.Data.EF
         public DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         /*public DbSet<Product> products { get; set; } đã config nên không cần thêm vào*/
         /*public DbSet<Product> Categories{ get; set; } đã config nên không cần thêm vào*/
     }

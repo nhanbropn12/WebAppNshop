@@ -12,5 +12,6 @@ namespace Nshopsolution.Data.Entities
         public string Address { set; get; }
         public string CardNumber { set; get; }
         public DateTime DateOfBirth { set; get; }
+        public List<Order> Orders { get; set; }
     }
 }

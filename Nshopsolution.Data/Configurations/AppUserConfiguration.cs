@@ -16,6 +16,7 @@ namespace Nshopsolution.Data.Configurations
             builder.Property(x => x.LastName).IsRequired();
             builder.Property(x => x.Address).IsRequired();
             builder.Property(x => x.Email).IsRequired();
+            
         }
     }
 }
