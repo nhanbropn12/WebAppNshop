@@ -41,26 +41,28 @@ namespace WebAppNshop.Controllers
                 var myCart = Carts;
                 if (myCart.Count() > 0 || myCart != null)//co san pham
                 {
-                    Guid orderId = new Guid();
                     
-                    Order oder = new Order
+                    var user = db.AppUsers.FirstOrDefault(x => x.Email == User.Identity.Name);
+                    Order order = new Order//bi lỗi khi đăng nhập bằng tài khoản mình tạo, tài khoản đăng ký thì ko sao
                     {
-                        OrderId = orderId,
-                        UserId = _userManager.GetUserAsync(User).Result.Id//so bi loi cho nay
+                        OrderId = new Guid(),
+                        UserId = user.Id//so bi loi cho nay
                         //createday and status da chinh kieu du lieu mac dinh trong cau hinh
                     };
                     //lưu vào database
-                    db.Orders.Add(oder);
-                    db.SaveChanges();
+                  /*  var orderId = order.OrderId;*/
+                    db.Orders.Add(order);
+                    /*db.SaveChanges();*/
                     List<OrderDetail> orderDetails = new List<OrderDetail>();
-                    foreach(var item in myCart)//dua order detail vao co so du lieu
+                    foreach (var item in myCart)//dua order detail vao co so du lieu
                     {
-                        OrderDetail orderDetail = new OrderDetail {
-                            OrderId = orderId,
-                            OrderDetailId=new Guid(),
-                            price=item.ToTalPrice,
-                            Quantity=item.Quantity,
-                            ProductId=item.ProductId
+                        OrderDetail orderDetail = new OrderDetail
+                        {
+                            OrderId = (Guid)order.OrderId,
+                            OrderDetailId = new Guid(),
+                            price = item.ToTalPrice,
+                            Quantity = item.Quantity,
+                            ProductId = (Guid)item.ProductId
                         };
                         orderDetails.Add(orderDetail);
                     }
@@ -70,11 +72,11 @@ namespace WebAppNshop.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Giỏ hàng rỗng");
+                  
                 }
-                
-                return View("GioHang", Carts);//dua ve gio hang rong (tam thoi)
-            }    
+
+                return View("ProductCart", Carts);//dua ve gio hang rong (tam thoi)
+            }
         }
         public IActionResult CheckOutForm()
         {
