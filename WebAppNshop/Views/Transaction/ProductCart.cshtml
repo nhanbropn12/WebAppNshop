@@ -43,7 +43,7 @@
                     </button>
                 </div>
 
-                <div class="total-price-item">@SessionExtensions.ToVnd((double)item.ToTalPrice)</div>
+                <div class="total-price-item">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd((double)item.ToTalPrice)</div>
             </div>
             TotalPrice += item.ToTalPrice;
         }
@@ -124,8 +124,8 @@
         <div class="label-provisional-price">
             <h3>Thanh toán</h3>
             
-            <p style="color:grey">Tạm tính  &emsp;</p><p>@SessionExtensions.ToVnd(TotalPrice)</p><br />
-            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">@SessionExtensions.ToVnd(TotalPrice)</p><br />
+            <p style="color:grey">Tạm tính  &emsp;</p><p>@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(TotalPrice)</p><br />
+            <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(TotalPrice)</p><br />
             <p style="color:grey;">(Đã bao gồm VAT)</p>
         </div>
         <a asp-action="CheckOutForm" asp-controller="Transaction" class="button-9 btn-payment">Thanh toán</a>

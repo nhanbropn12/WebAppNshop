@@ -44,7 +44,7 @@
                 }
               }
         </div>
-        <a asp-controller="Products" asp-action="ArticleProduct" id="button-link-to-post" class="btn btn-success"><i class="bi bi-pencil-square"></i>Chi tiết bài viết</a>
+        <a asp-controller="Products" asp-action="ArticleProduct" asp-route-id="@Model.idproduct" id="button-link-to-post" class="btn btn-success"><i class="bi bi-pencil-square"></i>Chi tiết bài viết</a>
     </div>
     <div class="name-and-reviews-product">
         <div class="name-detail-product">
@@ -74,7 +74,7 @@
         </div>
         <div class="price-detail-product">
 
-            <h1>@SessionExtensions.ToVnd((double)priceDiscount)<span style=" text-decoration: line-through;">@SessionExtensions.ToVnd((double)Model.OriginalPrice) Đ</span> giảm -@Model.discount%</h1>
+            <h1>@Nshopsolution.Data.Extention.SessionExtensions.ToVnd((double)priceDiscount)<span style=" text-decoration: line-through;">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd((double)Model.OriginalPrice)</span> giảm -@Model.discount%</h1>
             <div class="tax-and-guarantee-product">
                 <button class="button-2">Đã có VAT</button>
                 <button class="button-2">Bảo hành @Model.Warranty tháng</button>
@@ -82,7 +82,7 @@
             <a href="#"><i class="bi bi-heart"></i></a>
         </div>
         <div class="options-buy-product">
-            <a href="#" class="button-37"><i class="bi bi-cart-plus"></i>Thêm vào giỏ hàng</a>
+            <a asp-controller="Transaction" asp-action="AddToCart" asp-route-id="@Model.idproduct" class="button-37"><i class="bi bi-cart-plus"></i>Thêm vào giỏ hàng</a>
             <a href="#" class="button-66"><i class="bi bi-credit-card-2-front"></i>Thanh toán ngay</a>
             <a href="#" class="button-83"><i class="bi bi-telephone"></i>Liên hệ</a>
         </div>

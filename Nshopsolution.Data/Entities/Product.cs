@@ -19,6 +19,7 @@ namespace Nshopsolution.Data.Entities
         public Rate Rating { get; set; }//đánh giá sản phẩm
         public string Specifications { get; set; }//chi tiết sản phẩm
         /*public int soluongdaban*/
+        public string Description { get; set; }//Mo ta san pham
         public string ImageProduct { get; set; }
         /*IDcửa hàng
          id hãng

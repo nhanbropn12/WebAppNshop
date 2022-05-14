@@ -48,7 +48,9 @@
             }
             <img src="~/img/avatar.jpg" />
             <button onclick="toggleMenu()" class="btn btn-light option-user"><i class="bi bi-three-dots"></i></button>
-            <a asp-controller="Transaction" asp-action="ProductCart" class="cart"><i class="bi bi-cart"></i></a>
+            <a asp-controller="Transaction" asp-action="ProductCart" class="cart">
+                <div class="msg-cart">@ViewBag.CountOfCart</div>
+            <i class="bi bi-cart"></i></a>
             <a class="bell"><i class="bi bi-bell-fill"></i></a>
 
         </div>
@@ -61,44 +63,44 @@
                     Danh mục sản phẩm
                 </li>
                 <li>
-                    <a asp-action="ProductList"><i class="bi bi-laptop"></i>Laptop</a>
+                    <a asp-action="ProductList" asp-route-id="C1" ><i class="bi bi-laptop"></i>Laptop</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-pc-display"></i>PC</a>
+                    <a  asp-action="ProductList" asp-route-id="C2" ><i class="bi bi-pc-display"></i>PC</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-keyboard-fill"></i>Bàn phím</a>
+                    <a  asp-action="ProductList" asp-route-id="C3" ><i class="bi bi-keyboard-fill"></i>Bàn phím</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-mouse"></i>Chuột</a>
+                    <a  asp-action="ProductList" asp-route-id="C4" ><i class="bi bi-mouse"></i>Chuột</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-tv"></i>Màn hình</a>
+                    <a  asp-action="ProductList" asp-route-id="C5" ><i class="bi bi-tv"></i>Màn hình</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-headphones"></i>Tai nghe</a>
+                    <a  asp-action="ProductList" asp-route-id="C6" ><i class="bi bi-headphones"></i>Tai nghe</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-router"></i>Thiết bị mạng</a>
+                    <a  asp-action="ProductList" asp-route-id="C7" ><i class="bi bi-router"></i>Thiết bị mạng</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-device-ssd-fill"></i>Thiết bị văn phòng</a>
+                    <a  asp-action="ProductList" asp-route-id="C8" ><i class="bi bi-device-ssd-fill"></i>Thiết bị văn phòng</a>
                     <hr class="style-hr" />
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-cpu"></i>Linh kiện PC</a>
+                    <a  asp-action="ProductList" asp-route-id="C9" ><i class="bi bi-cpu"></i>Linh kiện PC</a>
                     <hr class="style-hr" />
                 </li>
 
                 <li>
-                    <a href="#"><i class="bi bi-device-hdd"></i>Phụ kiện</a>
+                    <a  asp-action="ProductList" asp-route-id="C10" ><i class="bi bi-device-hdd"></i>Phụ kiện</a>
                 </li>
             </ul>
         </div>

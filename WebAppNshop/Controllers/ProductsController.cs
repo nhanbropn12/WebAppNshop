@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Nshopsolution.Data.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,16 @@ namespace WebAppNshop.Controllers
 {
     public class ProductsController : Controller
     {
+        EShopDbContext db = new EShopDbContext();
         public IActionResult Index()
         {
             return View();
         }
        
-        public IActionResult ArticleProduct()
+        public IActionResult ArticleProduct(Guid id)
         {
-            return View("ArticleProduct");
+            var product = db.Products.SingleOrDefault(x => x.idproduct == id);
+            return View("ArticleProduct",product);
         }
     }
 }

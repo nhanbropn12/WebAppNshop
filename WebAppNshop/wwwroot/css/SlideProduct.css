@@ -71,9 +71,9 @@
     font-size: 1.4rem;
     font-weight: 600;
 }
-.price-product-small::after{
+/*.price-product-small::after{
     content:" VNĐ"
-}
+}*/
 .like-product-small {
     cursor: pointer;
     color: red;

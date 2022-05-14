@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Nshopsolution.Data.EF;
+using Nshopsolution.Data.Extention;
+using Nshopsolution.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,12 +17,22 @@ namespace WebAppNshop.Controllers
         EShopDbContext db = new EShopDbContext();
         public IActionResult Index()
         {
-            return View("HomePage");
+            var data = HttpContext.Session.Get<List<CartItemViewModel>>("GioHang");
+            if (data == null)
+{
+                HttpContext.Session.Set("CountOfCart", 0);
+            }
+            else
+            {
+                HttpContext.Session.Set("CountOfCart", data.Count());
+            }
+            var products = db.Products;
+            return View("HomePage",products);
         }
-        public IActionResult ProductList()
+        public IActionResult ProductList(string id)
         {
-            var product = db.Products;
-            return View("ProductList",product);
+            var products = db.Products.Where(x=>x.IdCategory==id);
+            return View("ProductList",products);
         }
         public IActionResult DetailProduct(Guid id)
         {

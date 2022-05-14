@@ -1,6 +1,9 @@
 ﻿.Main-Product-List{
     display: flex;
 }
+.window-product{
+    flex-grow: 2;/*đặt cho nó giãn hết cỡ*/
+}
 .tab-search-product {
     align-items: center;
     justify-content: center;
