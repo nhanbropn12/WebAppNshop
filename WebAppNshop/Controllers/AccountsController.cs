@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Uno.UI.Controls.Legacy;
+using Windows.UI.Xaml.Controls;
 //chưa inject các usermanage
 namespace WebAppNshop.Controllers
 {

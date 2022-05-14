@@ -17,7 +17,7 @@
                     <button class="btn btn-primary" type="button">Nhập file Excel</button>
                 </li>
                 <li class="nav-item ms-5">
-                    <button class="btn btn-primary" type="button">Xuất file Excel</button>
+                    <button class="btn btn-primary" id="btnExport">Xuất file Excel</button>
                 </li>
             </ul>
             <form class="d-flex">
@@ -30,20 +30,20 @@
 <div>
     <table class="table table-bordered border-primary col-sm-9">
         <tr>
-            <td>idProduct/td>
-            <td>idCategory</td>
-            <td>productName</td>
-            <td>Quantity</td>
-            <td>OriqinalPrice</td>
-            <td>Rating</td>
-            <td>Specifions</td>
-            <td>ImageProduct</td>
-            <td>Warranty</td>
-            <td></td>
+            <td style="width:100px;">idProduct/td>
+            <td style="width:100px;">idCategory</td>
+            <td style="width:100px;">productName</td>
+            <td style="width:100px;">Quantity</td>
+            <td style="width:100px;">OriqinalPrice</td>
+            <td style="width:100px;">Rating</td>
+            <td style="width:100px;" >Specifions</td>
+            <td style="width:100px;">ImageProduct</td>
+            <td style="width:100px;">Warranty</td>
+            <td style="width:100px;"></td>
         </tr>
         @foreach (var item in Model)
         {
-    <tr>
+    <tr id="@item.idproduct">
         <td>@item.idproduct</td>
         <td>@item.IdCategory</td>
         <td>@item.ProductName</td>
@@ -54,18 +54,71 @@
         <td><img style="height:50px;width:50px;" src="~/img/product/@item.ImageProduct" /></td>
         <td>@item.Warranty</td>
         <td style="text-align:center">
-            <a href="#">
-                Sửa
+            <a id="updateproduct" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#mdlExam">
+                <i class="bi bi-brush"></i>
             </a>||
-            <a href="#">
-                Xóa
+            <a id="deleteproduct" class="btn btn-danger">
+                <i class="bi bi-trash-fill"></i>
             </a>
         </td>
     </tr>
-        }
+       }
     </table>
 </div>
 <script type="text/javascript">
+    $(document).on('click', '#updateproduct', function () {
+        $("#txtidproduct").attr('readonly', true);
+        var trid = $(this).closest('tr').attr('id');
+        console.log(trid);
+        DetailProduct(trid);
+        $("#kiemtra").val(trid);
+    });
+    $(document).on('click', '#deleteproduct', function () {
+        let trid = $(this).closest('tr').attr('id');
+        console.log(trid);
+        a = confirm('Bạn có muốn xóa sản phẩm này?')
+        if (!a) {
+            return;
+        }
+       $.ajax({
+            url: "@Url.Action("DeleteProduct", "Accounts")",
+            type: "post",
+           data: {
+               idproduct: trid
+           },
+           success: function (data) {
+               location.reload();
+           }
+           });
+    });
+    function DetailProduct(idproduct){
+        $.ajax({
+            url: "@Url.Action("getDataDtaiProduct", "Accounts")",
+            type: "get",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: {
+                id: idproduct
+            },
+            success: function (data) {
+                var q = jQuery.parseJSON(data);
+                console.log(q);
+                $('#txtidproduct').val(q[0]['idproduct']);
+               // $('#select').val(q[0]['IdCategory'].toString());
+                $('#txtProductName').val(q[0]['ProductName']);
+                $('#txtQuantity').val(q[0]['Quantity']);
+                $('#txtdiscount').val(q[0]['discount']);
+                $('#txtOriginalPrice').val(q[0]['OriginalPrice']);
+                $('#txtSpecifications').val(q[0]['Specifications']);
+                $('#txtWarranty').val(q[0]['Warranty']);
+                $('#kiemtra1').val(q[0]['IdCategory']);
+                var text = $('#kiemtra1').val();
+                console.log(text);
+                LoadDropCategory(text);
+
+            }
+        });
+    }
     function LoadDropCategory(text) {
         $.ajax({
             url: "@Url.Action("getDataCategory","Accounts")",
@@ -99,36 +152,73 @@
     }
 
     $(document).on('click', '#addProduct', function () {
+        $('#txtidproduct').val('');
+        $('#select').val('');
+        $('#txtProductName').val('');
+        $('#txtQuantity').val('');
+        $('#txtdiscount').val('');
+        $('#txtOriginalPrice').val('');
+        $('#txtSpecifications').val('');
+        $('#txtWarranty').val('');
+        $('#kiemtra1').val('');
         var text = "";
+        $("#txtidproduct").attr('readonly', true);
         LoadDropCategory(text);
     });
+
     $(document).on('click', '#btnSubmit', function () {
+        let text = $('#kiemtra').val();
+        console.log(text);
+        let Idproduct= $('#txtidproduct').val();
         let IdCategory = $('#select').val();
         let ProductName = $('#txtProductName').val();// gán vulue cho ô input txt
         let Quantity = $('#txtQuantity').val();
+        let discount = $('#txtdiscount').val();
         let OriginalPrice= $('#txtOriginalPrice').val();
         let Specifications = $('#txtSpecifications').val();
         let ImageProduct = $('#ImageProduct').val();
         var Warranty = $('#txtWarranty').val();
-        
+        if (text.length == 0) {
             $.ajax({
                 url: '@Url.Action("AddProduct", "Accounts")',
                 type: 'post',
                 data: {
-                  
-                     IdCategory: IdCategory,
-                     ProductName: ProductName,
-                     Quantity: Quantity,
-                     OriginalPrice: OriginalPrice,
-                     Specifications: Specifications,
-                     ImageProduct: ImageProduct,
-                     Warranty: Warranty
+
+                    IdCategory: IdCategory,
+                    ProductName: ProductName,
+                    Quantity: Quantity,
+                    Discount: discount,
+                    OriginalPrice: OriginalPrice,
+                    Specifications: Specifications,
+                    ImageProduct: ImageProduct,
+                    Warranty: Warranty
                 },
                 success: function (data) {
                     //alert(data);
                     location.reload();
                 }
             });
+        } else {
+             $.ajax({
+                url: '@Url.Action("UpdateProduct", "Accounts")',
+                type: 'post',
+                data: {
+                    Idproduct: Idproduct,
+                    IdCategory: IdCategory,
+                    ProductName: ProductName,
+                    Quantity: Quantity,
+                    Discount: discount,
+                    OriginalPrice: OriginalPrice,
+                    Specifications: Specifications,
+                    ImageProduct: ImageProduct,
+                    Warranty: Warranty
+                },
+                success: function (data) {
+                    //alert(data);
+                    location.reload();
+                }
+            });
+        }
 
     });
 </script>
@@ -146,8 +236,14 @@
             <!-- Modal body -->
             <div class="modal-body" style="display: flex;flex-direction: column;align-items: center; justify-content:center">
                 <input type="hidden" id="kiemtra" value="">
+                @* load drop *@
+                <input type="hidden" id="kiemtra1" value="">
                 <form action="Create">
                     <span id="name-check"></span>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">idproduct</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtidproduct" rows="1"></textarea>
+                    </div>
                     <div class="form-group">
                         <label for="txaName" class="form-label" style="margin-bottom: 1px!important">IdCategory</label>
                         <select class="form-select" id="select" aria-label="Default select example">
@@ -160,6 +256,10 @@
                     <div class="form-group">
                         <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Quantity</label>
                         <textarea style="width: 330px;" class="form-control" id="txtQuantity" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">discount</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtdiscount" rows="1"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="txaName" class="form-label" style="margin-bottom: 1px!important">OriginalPrice</label>
