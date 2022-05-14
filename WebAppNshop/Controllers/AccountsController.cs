@@ -40,7 +40,7 @@ namespace WebAppNshop.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        public async  Task<IActionResult> SignUp(RegisterViewModel appUserModel)//nhưng không đưa xuống dữ liệu
+        public async  Task<IActionResult> SignUp(RegisterViewModel appUserModel)
         {
             var user = new AppUser
             {
@@ -49,6 +49,7 @@ namespace WebAppNshop.Controllers
                 LastName = appUserModel.LastName,
                 DateOfBirth= (DateTime)appUserModel.DateOfBirth,
                 Address=appUserModel.Address,
+                PhoneNumber=appUserModel.NumberPhone,
                 CardNumber=appUserModel.CardNumber,
                 Email=appUserModel.Email,
                 UserName=appUserModel.Email
@@ -117,7 +118,7 @@ namespace WebAppNshop.Controllers
 
         }
         [AllowAnonymous]
-        public async Task<IActionResult> SignIn(LoginViewModel appUserModel)//còn lỗi
+        public async Task<IActionResult> SignIn(LoginViewModel appUserModel)
         {
             if (ModelState.IsValid)
             {

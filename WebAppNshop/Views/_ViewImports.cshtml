@@ -5,6 +5,11 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<AppUser> _SignInManager
 @inject UserManager<AppUser> _UserManager
+@inject Nshopsolution.Data.EF.EShopDbContext db 
+@*để theo thứ tụ thì không lỗi*@
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@*dùng để truy xuất session ở view*@
 @using Nshopsolution.Data.ViewModels
 @using Nshopsolution.Data.Extention
-@using Microsoft.AspNetCore.Http
+

@@ -17,6 +17,7 @@ namespace WebAppNshop.Controllers
         EShopDbContext db = new EShopDbContext();
         public IActionResult Index()
         {
+            //set lai session so luong gio hang
             var data = HttpContext.Session.Get<List<CartItemViewModel>>("GioHang");
             if (data == null)
 {

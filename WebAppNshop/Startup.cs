@@ -42,6 +42,7 @@ namespace WebAppNshop
             services.AddDbContext<EShopDbContext>(c => c.UseSqlServer(connectionString));
             services.AddControllersWithViews();
             //enable dbcontext
+           
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.ConfigureApplicationCookie(option =>
             {

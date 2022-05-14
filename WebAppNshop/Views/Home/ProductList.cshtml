@@ -25,7 +25,7 @@
                         <span class="like-product-small"><i class="bi bi-heart"></i></span>
                         <img class="image-product-small" src="@item.ImageProduct">
                         <div class="name-product-small">@item.ProductName </div>
-                        <div class="price-product-small">@SessionExtensions.ToVnd((double)item.OriginalPrice)</div>@*cần chỉnh lại*@
+                        <div class="price-product-small">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd((double)item.OriginalPrice)</div>@*cần chỉnh lại*@
                         <a asp-controller="Transaction" asp-action="AddToCart" asp-route-id="@item.idproduct" class="buynow-product-small button-29">Thêm giỏ hàng</a>
                     </div>
                 </div>

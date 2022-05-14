@@ -31,14 +31,18 @@
         </div>
     </div>
     <div class="payment-checkout">
+        @if (_SignInManager.IsSignedIn(User))
+        {
+            var user = db.AppUsers.FirstOrDefault(x => x.Email == User.Identity.Name);
         <div class="address-for-deliver custom-address-for-deliver">@*From ProDuctCart view*@
             <h2>Giao tới</h2>
             @*<a href="#" class="change-address">Thay đổi</a>*@
-            <p>Tên người dùng<span class="vertical-line"></span>098369369396</p>
+            <p>@user.FirstName @user.LastName<span class="vertical-line"></span>@user.PhoneNumber</p>
             <textarea disabled class="address-content" cols="4" rows="4">
-                sdsadasfsadsadssafsafsafsafsfa
+                @user.Address
             </textarea>
         </div>
+        }
         <div class="price-checkout">
             <h3>Thanh toán</h3>
             <p style="color:grey">Tạm tính  &emsp;</p><p>@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(TotalPrice)</p><br />

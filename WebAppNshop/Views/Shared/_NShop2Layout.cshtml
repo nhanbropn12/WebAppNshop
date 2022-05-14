@@ -50,7 +50,7 @@
             <img src="~/img/avatar.jpg" />
             <button onclick="toggleMenu()" class="btn btn-light option-user"><i class="bi bi-three-dots"></i></button>
             <a asp-controller="Transaction" asp-action="ProductCart" class="cart">
-            <div class="msg-cart">@*@HttpContext.Get<string>("CountOfCart")*@</div>
+                <div class="msg-cart">@HttpContextAccessor.HttpContext.Session.GetString("CountOfCart")</div>
             <i class="bi bi-cart"></i></a>
             <a class="bell"><i class="bi bi-bell-fill"></i></a>
         </div>

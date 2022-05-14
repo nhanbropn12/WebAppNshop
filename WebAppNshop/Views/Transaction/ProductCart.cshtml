@@ -34,11 +34,11 @@
                 </div>
 
                 <div class="quantity-of-item">
-                    <button class="plus-btn" type="button" name="button">
+                    <button class="plus-btn" type="button" name="buttonplus">
                         <img src="~/SVG/plus.svg" alt="" />
                     </button>
-                    <input type="text" name="name" value="@item.Quantity">
-                    <button class="minus-btn" type="button" name="button">
+                    <input type="text" name="soluong" value="@item.Quantity">
+                    <button  class="minus-btn" type="button" name="buttonminus">
                         <img src="~/SVG/minus.svg" alt="" />
                     </button>
                 </div>
@@ -108,14 +108,17 @@
         </div>-->
     </div>
     <div class="panel-payment">
+        @if (_SignInManager.IsSignedIn(User)) {
+            var user = db.AppUsers.FirstOrDefault(x => x.UserName == User.Identity.Name);
         <div class="address-for-deliver">
             <h2>Giao tới</h2>
             <a href="#" class="change-address">Thay đổi</a>
-            <p>Tên người dùng<span class="vertical-line"></span>098369369396</p>
+            <p>@user.FirstName @user.LastName<span class="vertical-line"></span>@user.PhoneNumber</p>
             <textarea disabled class="address-content" cols="4" rows="4">
-                sdsadasfsadsadssafsafsafsafsfa
+                @user.Address
             </textarea>
         </div>
+        }
         <div class="code-promotion">
             <p>Nhập mã khuyến mãi</p>
             <input type="text" class="form-control input-promotion" placeholder="Nhập mã giảm giá ...." />

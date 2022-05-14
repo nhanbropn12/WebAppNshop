@@ -91,14 +91,30 @@ namespace WebAppNshop.Controllers
         //Lấy danh sách các sản phẩm trong giỏ hàng và setsession
         public List<CartItemViewModel> Carts{
             get{
+
+
                 var data = HttpContext.Session.Get<List<CartItemViewModel>>("GioHang");
                 if (data == null)
                 {
                     data = new List<CartItemViewModel>();
                 }
+                //set lai session so luong gio hang
+                /*var data = HttpContext.Session.Get<List<CartItemViewModel>>("GioHang");*/
+                if (data == null)
+                {
+                    HttpContext.Session.Set("CountOfCart", 0);
+                }
+                else
+                {
+                    HttpContext.Session.Set("CountOfCart", data.Count());
+                }
                 return data;
             }
+           
+
         }
+        
+       
         public IActionResult RemoveToCart(Guid id)//chưa làm
         {
             var myCart = Carts;
@@ -106,8 +122,9 @@ namespace WebAppNshop.Controllers
             HttpContext.Session.Set("GioHang", myCart);
             return View("ProductCart", Carts);
         }
-        public IActionResult AddToCart(Guid id)
+        public IActionResult AddToCart(Guid id)//bị vấn đề là khi load lại chính trang này thì số lượng tự tăng thêm
         {
+            
             var myCart = Carts;
             var item = myCart.SingleOrDefault(p => p.ProductId == id);
             if (item == null)
