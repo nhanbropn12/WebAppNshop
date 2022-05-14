@@ -110,6 +110,7 @@
                 $('#txtdiscount').val(q[0]['discount']);
                 $('#txtOriginalPrice').val(q[0]['OriginalPrice']);
                 $('#txtSpecifications').val(q[0]['Specifications']);
+                $('#txtDescription').val(q[0]['Description']);
                 $('#txtWarranty').val(q[0]['Warranty']);
                 $('#kiemtra1').val(q[0]['IdCategory']);
                 var text = $('#kiemtra1').val();
@@ -159,6 +160,7 @@
         $('#txtdiscount').val('');
         $('#txtOriginalPrice').val('');
         $('#txtSpecifications').val('');
+        $('#txtDescription').val('');
         $('#txtWarranty').val('');
         $('#kiemtra1').val('');
         var text = "";
@@ -176,6 +178,7 @@
         let discount = $('#txtdiscount').val();
         let OriginalPrice= $('#txtOriginalPrice').val();
         let Specifications = $('#txtSpecifications').val();
+        let Description = $('#txtDescription').val();
         let ImageProduct = $('#ImageProduct').val();
         var Warranty = $('#txtWarranty').val();
         if (text.length == 0) {
@@ -190,6 +193,7 @@
                     Discount: discount,
                     OriginalPrice: OriginalPrice,
                     Specifications: Specifications,
+                    Description: Description,
                     ImageProduct: ImageProduct,
                     Warranty: Warranty
                 },
@@ -210,6 +214,7 @@
                     Discount: discount,
                     OriginalPrice: OriginalPrice,
                     Specifications: Specifications,
+                    Description: Description,
                     ImageProduct: ImageProduct,
                     Warranty: Warranty
                 },
@@ -268,6 +273,10 @@
                     <div class="form-group">
                         <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Specifications</label>
                         <textarea style="width: 330px;" class="form-control" id="txtSpecifications" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txaName" class="form-label" style="margin-bottom: 1px!important">Description</label>
+                        <textarea style="width: 330px;" class="form-control" id="txtDescription" rows="1"></textarea>
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleFormControlFile1">ImageProduct</label>

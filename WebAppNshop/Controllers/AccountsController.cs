@@ -13,8 +13,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Uno.UI.Controls.Legacy;
-using Windows.UI.Xaml.Controls;
 //chưa inject các usermanage
 namespace WebAppNshop.Controllers
 {
@@ -120,7 +118,7 @@ namespace WebAppNshop.Controllers
             db.SaveChanges();
         }
         [HttpPost]
-        public void AddProduct(string IdCategory, string ProductName, string Quantity,string Discount, string OriginalPrice, string Specifications, string ImageProduct, string Warranty)
+        public void AddProduct(string IdCategory, string ProductName, string Quantity,string Discount, string OriginalPrice, string Specifications,string Description, string ImageProduct, string Warranty)
         {
             try
             {
@@ -133,6 +131,7 @@ namespace WebAppNshop.Controllers
                         product.OriginalPrice = decimal.Parse(OriginalPrice);
                         product.Rating =Rate.fiveStar;
                         product.Specifications = Specifications;
+                        product.Description = Description;
                         product.ImageProduct = Path.GetFileName(ImageProduct);
                         product.Warranty = int.Parse(Warranty);
                         db.Products.Add(product);
@@ -145,7 +144,7 @@ namespace WebAppNshop.Controllers
 
         }
          [HttpPost]
-        public void UpdateProduct(string Idproduct, string IdCategory, string ProductName, string Quantity, string Discount, string OriginalPrice, string Specifications, string ImageProduct, string Warranty)
+        public void UpdateProduct(string Idproduct, string IdCategory, string ProductName, string Quantity, string Discount, string OriginalPrice, string Specifications, string Description, string ImageProduct, string Warranty)
         {
             string img = Path.GetFileName(ImageProduct);
             try
@@ -159,6 +158,7 @@ namespace WebAppNshop.Controllers
                     objproduct.discount = int.Parse(Discount);
                     objproduct.OriginalPrice = decimal.Parse(OriginalPrice);
                     objproduct.Specifications = Specifications;
+                    objproduct.Description = Description;
                     objproduct.Warranty = int.Parse(Warranty);
                     db.SaveChanges();
                 }
@@ -171,6 +171,7 @@ namespace WebAppNshop.Controllers
                     objproduct.discount = int.Parse(Discount);
                     objproduct.OriginalPrice = decimal.Parse(OriginalPrice);
                     objproduct.Specifications = Specifications;
+                    objproduct.Description = Description;
                     objproduct.ImageProduct = img;
                     objproduct.Warranty = int.Parse(Warranty);
                     db.SaveChanges();
