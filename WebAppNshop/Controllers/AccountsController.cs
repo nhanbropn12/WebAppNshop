@@ -40,7 +40,7 @@ namespace WebAppNshop.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        public async  Task<IActionResult> SignUp(RegisterViewModel appUserModel)
+        public async  Task<IActionResult> SignUp(RegisterViewModel appUserModel)//nhưng không đưa xuống dữ liệu
         {
             var user = new AppUser
             {
@@ -49,7 +49,6 @@ namespace WebAppNshop.Controllers
                 LastName = appUserModel.LastName,
                 DateOfBirth= (DateTime)appUserModel.DateOfBirth,
                 Address=appUserModel.Address,
-                PhoneNumber=appUserModel.NumberPhone,
                 CardNumber=appUserModel.CardNumber,
                 Email=appUserModel.Email,
                 UserName=appUserModel.Email
@@ -92,9 +91,34 @@ namespace WebAppNshop.Controllers
             var a = JsonConvert.SerializeObject(lists);
             return Json(a);
         }
-
+        [HttpGet]
+        public JsonResult getDataDtaiProduct(string id)
+        {
+            var lists = db.Products.Where(s=>s.idproduct==Guid.Parse(id));
+            var a = JsonConvert.SerializeObject(lists);
+            return Json(a);
+        }
         [HttpPost]
-        public void AddProduct(string IdCategory, string ProductName, string Quantity, string OriginalPrice, string Specifications, string ImageProduct, string Warranty)
+        public void DeleteProduct(string idproduct)
+        {
+            //using(EShopDbContext db = new EShopDbContext())
+            //{
+            //    var query = from product in db.Products
+            //                where product.idproduct == Guid.Parse(idproduct)
+            //                select product;
+            //    foreach (Product product in query)
+            //    {
+            //        db.Products.Remove(product);
+            //    }
+            //    db.SaveChanges();
+            //}
+            Guid id = Guid.Parse(idproduct);
+            Product product = db.Products.Single(p=>p.idproduct==id);
+            db.Products.Remove(product);
+            db.SaveChanges();
+        }
+        [HttpPost]
+        public void AddProduct(string IdCategory, string ProductName, string Quantity,string Discount, string OriginalPrice, string Specifications, string ImageProduct, string Warranty)
         {
             try
             {
@@ -103,6 +127,7 @@ namespace WebAppNshop.Controllers
                         product.IdCategory = IdCategory;
                         product.ProductName = ProductName;
                         product.Quantity = int.Parse(Quantity);
+                        product.discount = int.Parse(Discount);
                         product.OriginalPrice = decimal.Parse(OriginalPrice);
                         product.Rating =Rate.fiveStar;
                         product.Specifications = Specifications;
@@ -117,8 +142,47 @@ namespace WebAppNshop.Controllers
             }
 
         }
-        [AllowAnonymous]
-        public async Task<IActionResult> SignIn(LoginViewModel appUserModel)
+         [HttpPost]
+        public void UpdateProduct(string Idproduct, string IdCategory, string ProductName, string Quantity, string Discount, string OriginalPrice, string Specifications, string ImageProduct, string Warranty)
+        {
+            string img = Path.GetFileName(ImageProduct);
+            try
+            {
+                if (img == null)
+                {
+                    Product objproduct = db.Products.Single(product => product.idproduct == Guid.Parse( Idproduct));    
+                    objproduct.IdCategory = IdCategory;
+                    objproduct.ProductName = ProductName;
+                    objproduct.Quantity = int.Parse(Quantity);
+                    objproduct.discount = int.Parse(Discount);
+                    objproduct.OriginalPrice = decimal.Parse(OriginalPrice);
+                    objproduct.Specifications = Specifications;
+                    objproduct.Warranty = int.Parse(Warranty);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    Product objproduct = db.Products.Single(product => product.idproduct == Guid.Parse(Idproduct));
+                    objproduct.IdCategory = IdCategory;
+                    objproduct.ProductName = ProductName;
+                    objproduct.Quantity = int.Parse(Quantity);
+                    objproduct.discount = int.Parse(Discount);
+                    objproduct.OriginalPrice = decimal.Parse(OriginalPrice);
+                    objproduct.Specifications = Specifications;
+                    objproduct.ImageProduct = img;
+                    objproduct.Warranty = int.Parse(Warranty);
+                    db.SaveChanges();
+                }
+
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+            [AllowAnonymous]
+        public async Task<IActionResult> SignIn(LoginViewModel appUserModel)//còn lỗi
         {
             if (ModelState.IsValid)
             {
