@@ -109,7 +109,9 @@
     </div>
     <div class="panel-payment">
         @if (_SignInManager.IsSignedIn(User)) {
-            var user = db.AppUsers.FirstOrDefault(x => x.UserName == User.Identity.Name);
+            var currentuser = _UserManager.GetUserAsync(User).Result.Email;
+            var user =db.AppUsers.FirstOrDefault(x => x.Email==currentuser);
+
         <div class="address-for-deliver">
             <h2>Giao tới</h2>
             <a href="#" class="change-address">Thay đổi</a>

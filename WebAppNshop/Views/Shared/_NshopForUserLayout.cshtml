@@ -59,19 +59,22 @@
     </header>
     <hr class="style-hr" />
     <main>
-        <div class="NavBarMenu ">
-            <ul class="options-user">
-                <li class="Image-and-name-user">
-                    <img src="~/img/avatar.jpg"/>
-                    <h4>Tên người dùng</h4>
-                </li>
-                <li class="option-for-user"><a class="button-2" href="#">Thông tin người dùng</a></li>
-                <li class="option-for-user"><a class="button-2" href="#">Lịch sử người dùng</a></li>
-                <li class="option-for-user"><a class="button-2" href="#">Sản phẩm yêu thích</a></li>
-                
-                <li class="back-to-home-user"><a class="button-83" href="#">Quay lại cửa hàng</a></li>
-            </ul>
-        </div>
+        @if (_SignInManager.IsSignedIn(User))
+        {
+            <div class="NavBarMenu ">
+                <ul class="options-user">
+                    <li class="Image-and-name-user">
+                        <img src="~/img/avatar.jpg" />
+                        <h4>Tên người dùng</h4>
+                    </li>
+                    <li class="option-for-user"><a class="button-2" asp-controller="Accounts" asp-action="Index">Thông tin người dùng</a></li>
+                    <li class="option-for-user"><a class="button-2" asp-controller="Transaction" asp-action="Index">Lịch sử giao dịch</a></li>
+                    <li class="option-for-user"><a class="button-2" href="#">Sản phẩm yêu thích</a></li>
+
+                    <li class="back-to-home-user"><a class="button-83" asp-controller="Home" asp-action="Index">Quay lại cửa hàng</a></li>
+                </ul>
+            </div>
+        }
         <div class="Main-Content">
             @RenderBody()
         </div>

@@ -31,7 +31,7 @@ namespace Nshopsolution.Data.Extention
                 UserName= "nguyenhuunhan1903@gmail.com",
                     Email="nguyenhuunhan1903@gmail.com",PhoneNumber="0985255602",DateOfBirth=new DateTime(2001-03-19),
                     PasswordHash = hasher.HashPassword(null, "@Rhymastic"),
-                    SecurityStamp = string.Empty,
+                    SecurityStamp = new Guid("1820FCE4-B5DD-4D69-AACA-D8E31DAB6DD9").ToString("D"),
                     NormalizedEmail="NGUYENHUUNHAN1903@GMAIL.COM",
                     NormalizedUserName= "NGUYENHUUNHAN1903@GMAIL.COM",
                     Address ="tổ 46 khu vực 9 phường Đống Đa Quy Nhơn"

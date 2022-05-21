@@ -1,0 +1,70 @@
+﻿@{ 
+    Layout = "_NshopForUserLayout";
+}
+<html>
+<head>
+<style>
+    body {
+        height: 100%;
+        text-align: center;
+        padding: 40px 0
+    }
+    .Main-Content {
+        background-image: url('https://cdn.brvn.vn/topics/1280px/2021/319545_Shopping_Cart_Abandonment_cove_1629196930.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .card-checkout h1 {
+        color: #88B04B;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+        font-weight: 900;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .card-checkout p {
+        color: #404F5E;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+        font-size: 20px;
+        margin: 2rem;
+    }
+
+    .card-checkout i {
+        color: #9ABC66;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left: -15px;
+    }
+    .card-checkout a{
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .card-checkout a:hover {
+        color:aliceblue;
+    }
+    .card-checkout {
+        opacity: 0.95;
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 18rem auto;
+        
+    }
+    
+</style>
+  </head>
+<body>
+    <div class="card-checkout">
+        <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+            <i class="checkmark">✓</i>
+        </div>
+        <h1>Thành công</h1>
+        <p>Bạn đã thanh toán thành công<br />Hãy theo dõi đơn hàng!</p>
+        <a class="button-37"  asp-controller="Transaction" asp-action="Index">Theo dõi đơn hàng</a>
+    </div>
+    
+</body>
+</html>

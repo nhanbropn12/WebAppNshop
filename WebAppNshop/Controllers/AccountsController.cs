@@ -51,7 +51,8 @@ namespace WebAppNshop.Controllers
                 Address=appUserModel.Address,
                 CardNumber=appUserModel.CardNumber,
                 Email=appUserModel.Email,
-                UserName=appUserModel.Email
+                UserName=appUserModel.Email,
+                PhoneNumber=appUserModel.NumberPhone
             };
             var result = await _userManager.CreateAsync(user, appUserModel.Password);
             if (result.Succeeded)

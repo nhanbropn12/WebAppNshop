@@ -1,12 +1,11 @@
 ﻿header {
     display: flex;
     justify-content: center;
-    align-items:center;
-   padding: 9px 12px 6px 12px;
-   
+    align-items: center;
+    padding: 9px 12px 6px 12px;
+    width: max-content;/*chỉnh tối đa width không để nó wrap*/
     height: 110px;
     margin: 12px 20% 12px 20%;
-   
 }
 .header-user > *{
     margin: 0.3rem;

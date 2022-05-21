@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nshopsolution.Data.EF;
 
 namespace Nshopsolution.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    partial class EShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220521080904_updateAdminAccount")]
+    partial class updateAdminAccount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,8 +162,8 @@ namespace Nshopsolution.Data.Migrations
                             Id = 1,
                             Address = "Quy Nhon",
                             CardNumber = "1234",
-                            DateCreate = new DateTime(2022, 5, 21, 15, 10, 56, 709, DateTimeKind.Local).AddTicks(6999),
-                            DateOfBirth = new DateTime(2022, 5, 21, 15, 10, 56, 709, DateTimeKind.Local).AddTicks(6695),
+                            DateCreate = new DateTime(2022, 5, 21, 15, 9, 3, 989, DateTimeKind.Local).AddTicks(50),
+                            DateOfBirth = new DateTime(2022, 5, 21, 15, 9, 3, 988, DateTimeKind.Local).AddTicks(9538),
                             Email = "nguyentinh14032001@gmail.com",
                             FirstName = "NguyenTinh",
                             LastName = "Nguyen"
@@ -209,7 +211,7 @@ namespace Nshopsolution.Data.Migrations
                         new
                         {
                             Id = new Guid("7042c312-4894-454f-a631-b90edd2702f4"),
-                            ConcurrencyStamp = "873b03d3-513e-47c2-b50a-087a88656d2f",
+                            ConcurrencyStamp = "5f7cee75-4bb9-415f-ae08-8e1ec8b93049",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -293,7 +295,7 @@ namespace Nshopsolution.Data.Migrations
                             Id = new Guid("7c158b01-5aba-4469-bbb8-e55ea43126c6"),
                             AccessFailedCount = 0,
                             Address = "tổ 46 khu vực 9 phường Đống Đa Quy Nhơn",
-                            ConcurrencyStamp = "bd1814ac-6bad-4324-bb42-8ccf39720eb0",
+                            ConcurrencyStamp = "4b35af17-b736-4d76-accb-963b7a2f2d40",
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1979),
                             Email = "nguyenhuunhan1903@gmail.com",
                             EmailConfirmed = false,
@@ -302,10 +304,10 @@ namespace Nshopsolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NGUYENHUUNHAN1903@GMAIL.COM",
                             NormalizedUserName = "NGUYENHUUNHAN1903@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEErSjpCn+g5OHmaLipPjyanUvPoNXYiCVneKPGJvfjwtw4MWlInlC7qkgCiMFL48nQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELCVldWiYNUkE3pJL1+etb6qz3PvCEDWyHVjjRRX9RwkJPyJYxvBNou3BhuT6+CUMA==",
                             PhoneNumber = "0985255602",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1820fce4-b5dd-4d69-aaca-d8e31dab6dd9",
+                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
                             TwoFactorEnabled = false,
                             UserName = "nguyenhuunhan1903@gmail.com"
                         });
@@ -414,7 +416,7 @@ namespace Nshopsolution.Data.Migrations
                     b.Property<DateTime>("CreateDay")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 5, 21, 15, 10, 56, 704, DateTimeKind.Local).AddTicks(3588));
+                        .HasDefaultValue(new DateTime(2022, 5, 21, 15, 9, 3, 983, DateTimeKind.Local).AddTicks(4285));
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");

@@ -75,7 +75,7 @@ namespace WebAppNshop.Controllers
                   
                 }
 
-                return View("ProductCart", Carts);//dua ve gio hang rong (tam thoi)
+                return View("CheckoutSuccess");//dua ve gio hang rong (tam thoi)
             }
         }
         public IActionResult CheckOutForm()
@@ -151,6 +151,10 @@ namespace WebAppNshop.Controllers
         public IActionResult ProductCart()
         {
             return View("ProductCart",Carts);
+        }
+        public IActionResult CheckoutSuccess()
+        {
+            return View("CheckoutSuccess");
         }
     }
 }
