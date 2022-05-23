@@ -120,8 +120,9 @@ namespace WebAppNshop.Controllers
             var myCart = Carts;
             myCart.RemoveAll(x => x.ProductId == id);
             HttpContext.Session.Set("GioHang", myCart);
-            return View("ProductCart", Carts);
+            return RedirectToAction("ProductCart");
         }
+        
         public IActionResult AddToCart(Guid id)//bị vấn đề là khi load lại chính trang này thì số lượng tự tăng thêm
         {
             
@@ -146,8 +147,10 @@ namespace WebAppNshop.Controllers
 	        }
             //set lai session
             HttpContext.Session.Set("GioHang", myCart);
-            return View("ProductCart",Carts);
+           /* return View("ProductCart",Carts);*/
+           return RedirectToAction("ProductCart");
         }
+        [Route("Transaction/ProductCart")]
         public IActionResult ProductCart()
         {
             return View("ProductCart",Carts);
