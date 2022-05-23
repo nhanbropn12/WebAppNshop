@@ -109,15 +109,15 @@
     </div>
     <div class="panel-payment">
         @if (_SignInManager.IsSignedIn(User)) {
-            var currentuser = _UserManager.GetUserAsync(User).Result.Email;
-            var user =db.AppUsers.FirstOrDefault(x => x.Email==currentuser);
 
+            var user = await _UserManager.GetUserAsync(User);
+            
         <div class="address-for-deliver">
             <h2>Giao tới</h2>
             <a href="#" class="change-address">Thay đổi</a>
             <p>@user.FirstName @user.LastName<span class="vertical-line"></span>@user.PhoneNumber</p>
             <textarea disabled class="address-content" cols="4" rows="4">
-                @user.Address
+               @user.Address
             </textarea>
         </div>
         }
@@ -127,8 +127,7 @@
             <button class="btn btn-info apply-code-promotion">Áp dụng</button>
         </div>
         <div class="label-provisional-price">
-            <h3>Thanh toán</h3>
-            
+            <h3>Thanh toán</h3> 
             <p style="color:grey">Tạm tính  &emsp;</p><p>@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(TotalPrice)</p><br />
             <p style="color:grey">Thành tiền  &emsp;</p><p style="color: var(--red-color-2);font-size:1.8rem;font-weight:600;">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(TotalPrice)</p><br />
             <p style="color:grey;">(Đã bao gồm VAT)</p>

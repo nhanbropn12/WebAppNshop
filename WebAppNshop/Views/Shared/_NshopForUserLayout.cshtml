@@ -42,7 +42,7 @@
             <a asp-controller="Accounts" asp-action="SignUp" class="btn btn-warning btheader"><i class="bi bi-door-open"></i>Đăng ký</a>
             @if (_SignInManager.IsSignedIn(User))
             {
-                <button class="btn btn-light user">@User.Identity.Name</button>
+        <button class="btn btn-light user">Xin chào, @_UserManager.GetUserAsync(User).Result.FirstName</button>
             }
             else
             {

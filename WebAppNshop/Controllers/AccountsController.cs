@@ -186,7 +186,7 @@ namespace WebAppNshop.Controllers
 
         }
             [AllowAnonymous]
-        public async Task<IActionResult> SignIn(LoginViewModel appUserModel)//còn lỗi
+        public async Task<IActionResult> SignIn(LoginViewModel appUserModel)
         {
             if (ModelState.IsValid)
             {
@@ -199,7 +199,7 @@ namespace WebAppNshop.Controllers
                     appUserModel.Password, appUserModel.RememberMe, false);
                     if (result.Succeeded)
                     {
-                       /* await _signInManager.SignInAsync(user, isPersistent: appUserModel.RememberMe);*/
+                        db.SaveChanges();
                         return RedirectToAction("Index", "Home");
                         
                     }

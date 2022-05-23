@@ -25,10 +25,12 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input asp-for="Email" asp-validation-for="Username" type="text" placeholder="Tên tài khoản ..." />
                     <input asp-for="Password" asp-validation-for="Password" type="password" placeholder="Mật khẩu ..." />
+                    <input asp-for="RememberMe" style="width: fit-content;"><span style="color:#b6b6b6;font-size: 0.9em;"> Ghi nhớ đăng nhập.</span>
                     <input class="subbt" type="submit" value="Sign In" style="border:none;" />
                     @*<span style="color:red;">@ViewBag.err</span>*@
+
                 </form>
-                <input asp-for="RememberMe" type="checkbox" id="remember" name="remember"><span style="color:#b6b6b6;font-size: 0.9em;"> Ghi nhớ đăng nhập.</span><a href="#">Quên tài khoản?</a>
+                <a href="#">Quên tài khoản?</a>
             </div>
         </div>
     </div>

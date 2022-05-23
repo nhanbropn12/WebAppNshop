@@ -29,7 +29,7 @@ namespace WebAppNshop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EShopDbContext>(option => option.UseInMemoryDatabase("InMemoryDB")) ;
+          /*  services.AddDbContext<EShopDbContext>(option => option.UseInMemoryDatabase("InMemoryDB")) ;*/
             //services register and login
             services.AddIdentity<AppUser, AppRole>(
                 options =>
@@ -42,7 +42,7 @@ namespace WebAppNshop
             services.AddDbContext<EShopDbContext>(c => c.UseSqlServer(connectionString));
             services.AddControllersWithViews();
             //enable dbcontext
-           
+            services.AddHttpContextAccessor();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.ConfigureApplicationCookie(option =>
             {
