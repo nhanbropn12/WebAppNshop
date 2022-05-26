@@ -10,9 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAppNshop.Controllers
 {
+    
     public class TransactionController : Controller
     {
         readonly EShopDbContext db = new EShopDbContext();
@@ -25,9 +27,17 @@ namespace WebAppNshop.Controllers
             this._userManager = _userManager;
             this._signInManager = _signInManager;
         }
+       /* [Authorize]//check whever signin*/
         public IActionResult Index()
         {
-            return View();
+            if (_signInManager.IsSignedIn(User))
+            {
+                ViewBag.listproduct = db.Products.Where(x => 1 < 2).ToList();
+                var listOrder = db.Orders.Where(x => x.UserId == _userManager.GetUserAsync(User).Result.Id);
+                return View(listOrder);
+            }
+            else
+                return View(null);
         }
         public IActionResult Pay()
         {
@@ -155,6 +165,7 @@ namespace WebAppNshop.Controllers
         {
             return View("ProductCart",Carts);
         }
+        
         public IActionResult CheckoutSuccess()
         {
             return View("CheckoutSuccess");

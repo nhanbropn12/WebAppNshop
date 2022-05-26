@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.AspNetCore.Authorization;
 namespace WebAppNshop
 {
     public class Startup
