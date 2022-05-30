@@ -13,8 +13,8 @@
     }
 
     .sanpham {
-        border-radius: 20px;
-        border: groove;
+       @* border-radius: 20px;
+        border: groove;*@
         padding: 10px;
     }
 
@@ -37,6 +37,7 @@
 
     .bg-light {
         padding: 20px;
+        background-color: white !important;
     }
 
     .thea1:hover {
@@ -64,7 +65,8 @@
             </div>
         </div>*@
     <div class="col-md-10">
-        <div class="container d-flex">
+        <div class="container d-flex" style="background-color: white; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
+       border-bottom: 2.1px solid #0094ff;">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="thea1" href="#">Tất cả đơn hàng</a>
             </nav>
@@ -86,7 +88,7 @@
 
         </div>
 
-        <hr>
+       
         @using (var dbct = new Nshopsolution.Data.EF.EShopDbContext())
         {
             @if (Model != null)
@@ -95,7 +97,7 @@
                 @foreach (var order in Model)
                 {
                     var listOrderDetail = dbct.OrderDetails.Where(x => x.OrderId == order.OrderId);
-                    <div class="container main" style="border: 0.21rem solid #d1d1d1;border-radius: 1.2rem;margin: 1.2rem;">
+                    <div class="container main" style="border: 0.21rem solid #d1d1d1; border-radius: 1.2rem; margin: 1.2rem; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;background-color: white;">
                         
                         <div>
                             <span>Trạng thái: </span>
@@ -137,6 +139,7 @@
                                             }
                                     </div>
                                 </div>
+                                <hr />
 
 
                                 bill += orderdetail.ToTalPrice;

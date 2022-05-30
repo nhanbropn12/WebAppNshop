@@ -32,7 +32,7 @@
             @if (_SignInManager.IsSignedIn(User))
             {
                 <div id="menu-user-dropdown-toggle" class="menu-user-dropdown">
-                    <a asp-controller="Accounts" asp-action="Index" class="btn btn-info">Thông tin người dùng</a>
+                    <a asp-controller="Accounts" asp-action="Profile" class="btn btn-info">Thông tin người dùng</a>
                     <a asp-controller="Transaction" asp-action="Index" class="btn btn-secondary">Lịch sử giao dịch</a>
                     <a href="#" class="btn btn-warning">Sản phẩm yêu thích</a>
                     <a asp-controller="Accounts" asp-action="SignOut"  class="btn btn-danger">Đăng xuất</a>

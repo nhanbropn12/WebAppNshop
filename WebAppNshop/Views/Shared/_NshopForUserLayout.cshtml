@@ -32,7 +32,7 @@
             @if (_SignInManager.IsSignedIn(User))
             {
             <div id="menu-user-dropdown-toggle" class="menu-user-dropdown">
-                <a asp-controller="Accounts" asp-action="Index" class="btn btn-info">Thông tin người dùng</a>
+                <a asp-controller="Accounts" asp-action="Profile" class="btn btn-info">Thông tin người dùng</a>
                 <a asp-controller="Transaction" asp-action="Index" class="btn btn-secondary">Lịch sử giao dịch</a>
                 <a href="#" class="btn btn-warning">Sản phẩm yêu thích</a>
                 <a asp-controller="Accounts" asp-action="SignOut"  class="btn btn-danger">Đăng xuất</a>
@@ -65,9 +65,9 @@
                 <ul class="options-user">
                     <li class="Image-and-name-user">
                         <img src="~/img/avatar.jpg" />
-                        <h4>Tên người dùng</h4>
+                        <h4>@_UserManager.GetUserAsync(User).Result.FirstName @_UserManager.GetUserAsync(User).Result.LastName</h4>
                     </li>
-                    <li class="option-for-user"><a class="button-2" asp-controller="Accounts" asp-action="Index">Thông tin người dùng</a></li>
+                    <li class="option-for-user"><a class="button-2" asp-controller="Accounts" asp-action="Profile">Thông tin người dùng</a></li>
                     <li class="option-for-user"><a class="button-2" asp-controller="Transaction" asp-action="Index">Lịch sử giao dịch</a></li>
                     <li class="option-for-user"><a class="button-2" href="#">Sản phẩm yêu thích</a></li>
 

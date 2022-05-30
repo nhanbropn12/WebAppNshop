@@ -217,5 +217,42 @@ namespace WebAppNshop.Controllers
         {
             return View("Index2");
         }
+        public IActionResult Profile()
+        {
+            if (_signInManager.IsSignedIn(User))
+            {
+                var user = db.AppUsers.Find(_userManager.GetUserAsync(User).Result.Id);
+                return View("Profile", user);
+            }
+            else
+                return RedirectToAction("Error", "ErrorPage", 404);
+        }
+        public IActionResult SaveProfile(AppUser user)
+        {
+
+
+            var userCurrent = _userManager.GetUserAsync(User);
+            if (ModelState.IsValid)
+            {
+                userCurrent.Result.PhoneNumber = user.PhoneNumber;
+                userCurrent.Result.FirstName = user.FirstName;
+                userCurrent.Result.LastName = user.LastName;
+               
+                userCurrent.Result.Address = user.Address;
+                var result = _userManager.UpdateAsync(userCurrent.Result);
+
+                if (result.Result.Succeeded)
+                {
+                    ViewBag.Msg = "*Đã cập nhật xong dữ liệu";
+                    return View("Profile",userCurrent.Result);
+                }
+
+                foreach (var error in result.Result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View("Profile", userCurrent.Result);
+        }
     }
 }
