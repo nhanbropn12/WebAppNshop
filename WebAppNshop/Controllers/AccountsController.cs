@@ -237,7 +237,8 @@ namespace WebAppNshop.Controllers
                 userCurrent.Result.PhoneNumber = user.PhoneNumber;
                 userCurrent.Result.FirstName = user.FirstName;
                 userCurrent.Result.LastName = user.LastName;
-               
+                userCurrent.Result.DateOfBirth = (DateTime)user.DateOfBirth;
+                userCurrent.Result.CardNumber = user.CardNumber;
                 userCurrent.Result.Address = user.Address;
                 var result = _userManager.UpdateAsync(userCurrent.Result);
 

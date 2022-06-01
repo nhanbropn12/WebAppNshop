@@ -170,5 +170,12 @@ namespace WebAppNshop.Controllers
         {
             return View("CheckoutSuccess");
         }
+        public IActionResult CancelOrder(Guid id)
+        {
+            var ordermodify = db.Orders.FirstOrDefault(x => x.OrderId == id);
+            ordermodify.status = Nshopsolution.Data.Enum.Status.Canceled;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

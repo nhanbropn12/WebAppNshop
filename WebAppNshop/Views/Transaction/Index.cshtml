@@ -134,9 +134,7 @@
                                     <div class="d-flex" style="align-items:center;justify-content:flex-end">
                                         <label for="formGroupExampleInput" class="form-label" style="font-weight:bold;margin-right:15px">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(orderdetail.ToTalPrice)</label>
                                         <button class="btn btn-default">Xem chi tiết</button>
-                                        @if (order.status != Nshopsolution.Data.Enum.Status.Canceled && order.status != Nshopsolution.Data.Enum.Status.failed) {
-                                        <button class="btn btn-outline-danger">Hủy đơn hàng</button>
-                                            }
+                                        
                                     </div>
                                 </div>
                                 <hr />
@@ -144,10 +142,14 @@
 
                                 bill += orderdetail.ToTalPrice;
                                         }
-                            <div style="font-size:19px;">
-                                <span>Tổng tiền: </span>
-                                <b style="color:#ac3131">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(bill)</b>
-                            </div>
+                        <div style="font-size:19px;padding:10px">
+                            <span>Tổng tiền: </span>
+                            <b style="color:#ac3131">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd(bill)</b>
+                            @if (order.status != Nshopsolution.Data.Enum.Status.Canceled && order.status != Nshopsolution.Data.Enum.Status.failed)
+                            {
+                                <a asp-action="CancelOrder" asp-route-id="@order.OrderId" class="btn btn-outline-danger">Hủy đơn hàng</a>
+                            }
+                        </div>
                         </div>
                     </div>
                 }
