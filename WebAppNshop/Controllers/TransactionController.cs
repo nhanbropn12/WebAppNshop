@@ -34,7 +34,7 @@ namespace WebAppNshop.Controllers
             {
                 ViewBag.listproduct = db.Products.Where(x => 1 < 2).ToList();
                 var listOrder = db.Orders.Where(x => x.UserId == _userManager.GetUserAsync(User).Result.Id);
-                return View(listOrder);
+                return View(listOrder.ToList().Reverse<Order>());
             }
             else
                 return View(null);
