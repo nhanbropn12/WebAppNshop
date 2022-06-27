@@ -160,6 +160,17 @@ namespace WebAppNshop.Controllers
            /* return View("ProductCart",Carts);*/
            return RedirectToAction("ProductCart");
         }
+        public IActionResult MinusToCart(Guid id)
+        {
+            var myCart = Carts;
+            var item = myCart.SingleOrDefault(p => p.ProductId == id);
+            if (item != null&&item.Quantity>1)
+            {
+                item.Quantity--;
+                HttpContext.Session.Set("GioHang", myCart);
+            }
+            return RedirectToAction("ProductCart");
+        }
         [Route("Transaction/ProductCart")]
         public IActionResult ProductCart()
         {

@@ -30,8 +30,8 @@
 <div>
     <table class="table table-bordered border-primary col-sm-9">
         <tr>
-            <td style="width:100px;">idProduct/td>
-            <td style="width:100px;">idCategory</td>
+           @* <td style="width:100px;">idProduct/td>*@
+            @*<td style="width:100px;">idCategory</td>*@
             <td style="width:100px;">productName</td>
             <td style="width:100px;">Quantity</td>
             <td style="width:100px;">OriqinalPrice</td>
@@ -44,14 +44,14 @@
         @foreach (var item in Model)
         {
     <tr id="@item.idproduct">
-        <td>@item.idproduct</td>
-        <td>@item.IdCategory</td>
+       @* <td>@item.idproduct</td>*@
+       @* <td>@item.IdCategory</td>*@
         <td>@item.ProductName</td>
         <td>@item.Quantity</td>
         <td>@item.OriginalPrice</td>
         <td>@item.Rating</td>
         <td>@item.Specifications</td>
-        <td><img style="height:50px;width:50px;" src="~/img/product/@item.ImageProduct" /></td>
+        <td><img style="max-width:100%;" src="@item.ImageProduct" /></td>
         <td>@item.Warranty</td>
         <td style="text-align:center">
             <a id="updateproduct" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#mdlExam">

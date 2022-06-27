@@ -80,6 +80,7 @@ namespace WebAppNshop.Controllers
              return View("SignIn");
             }    
         }
+        [Authorize(Roles = "admin")]
         public IActionResult Index3()
         {
             var product = db.Products;
@@ -200,11 +201,16 @@ namespace WebAppNshop.Controllers
                     if (result.Succeeded)
                     {
                         db.SaveChanges();
+                        if(await _userManager.IsInRoleAsync(user,"admin"))
+                        {
+                            return RedirectToAction("Index3");
+                        }
                         return RedirectToAction("Index", "Home");
                         
                     }
                 }
             }
+           
             ModelState.AddModelError("", "Không đăng nhập được. Kiểm tra lại!");
             return View("SignIn");
         }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Nshopsolution.Data.EF;
+using Nshopsolution.Data.Entities;
 using Nshopsolution.Data.Extention;
 using Nshopsolution.Data.ViewModels;
 using System;
@@ -15,6 +17,7 @@ namespace WebAppNshop.Controllers
     public class HomeController : Controller
     {
         EShopDbContext db = new EShopDbContext();
+      /*  private readonly UserManager<AppUser> _userManager;*/
         public IActionResult Index()
         {
             //set lai session so luong gio hang
@@ -26,6 +29,11 @@ namespace WebAppNshop.Controllers
             else
             {
                 HttpContext.Session.Set("CountOfCart", data.Count());
+            }
+            
+            if (User.IsInRole("admin"))
+            {
+                return RedirectToAction("Index3", "Accounts");
             }
             var products = db.Products;
             return View("HomePage",products);

@@ -33,13 +33,13 @@
                 </div>
 
                 <div class="quantity-of-item">
-                    <button class="plus-btn" type="button" name="buttonplus">
+                    <a asp-action="AddToCart" asp-route-id="@item.ProductId">
                         <img src="~/SVG/plus.svg" alt="" />
-                    </button>
+                    </a>
                     <input type="text" name="soluong" value="@item.Quantity">
-                    <button  class="minus-btn" type="button" name="buttonminus">
+                    <a  asp-action="MinusToCart" asp-route-id="@item.ProductId">
                         <img src="~/SVG/minus.svg" alt="" />
-                    </button>
+                    </a>
                 </div>
 
                 <div class="total-price-item">@Nshopsolution.Data.Extention.SessionExtensions.ToVnd((double)item.ToTalPrice)</div>
