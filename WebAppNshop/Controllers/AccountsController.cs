@@ -44,7 +44,7 @@ namespace WebAppNshop.Controllers
         {
             var user = new AppUser
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 FirstName = appUserModel.FirstName,
                 LastName = appUserModel.LastName,
                 DateOfBirth= (DateTime)appUserModel.DateOfBirth,
@@ -57,8 +57,8 @@ namespace WebAppNshop.Controllers
             var result = await _userManager.CreateAsync(user, appUserModel.Password);
             if (result.Succeeded)
             {
-                db.AppUsers.Add(user);
-                await db.SaveChangesAsync();
+                /*db.AppUsers.Add(user);
+                await db.SaveChangesAsync();*/
                 await _signInManager.SignInAsync(user, isPersistent: true);
                 return RedirectToAction("Index","Home");
                 

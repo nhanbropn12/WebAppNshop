@@ -6,14 +6,15 @@
     <div class="left-login-box">
         <h1>Đăng ký</h1>
         <form method="post" asp-controller="Accounts" asp-action="SignUp">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div style="position:absolute;top:-9rem;font-size: 1.4rem;" asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="text" asp-for="FirstName" placeholder="Nhập firstname ...." required />
             <input type="text" asp-for="LastName" placeholder="Nhập lastname ...." required />
-            <textarea cols="3" rows="5" style="resize: none;width:100%;" asp-for="Address"></textarea>
+            <textarea cols="3" rows="5" style="resize: none;width:100%;font-size:1.4rem;" asp-for="Address"></textarea>
             <input type="text" asp-for="NumberPhone" placeholder="Nhập số điện thoại ..." />
             <input type="text" asp-for="CardNumber" placeholder="Nhập CardNumber ..." />
             <input type="text" asp-for="Email" placeholder="E-mail" required />
-            <input asp-for="DateOfBirth" style="font-size: 1.6rem;" />
+            <input asp-for="DateOfBirth" pattern="\d{4}-\d{2}-\d{2}" type="date" placeholder="dd-mm-yyyy"
+        min="1997-01-01" max="2012-12-31" style="font-size: 1.6rem;" />
             <input type="password" name="password" placeholder="Password" required />
             <input type="password" name="password2" placeholder="Nhập lại password" required />
             <input type="submit" name="signup_submit" value="Đăng ký" />
